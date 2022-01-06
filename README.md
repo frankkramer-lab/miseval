@@ -4,20 +4,6 @@
 placeholder for badges
 ```
 
-The open-source Python library miseval is a metric library for evaluation of medical image segmentation.
-
-**MIScnn provides several core features:**
-- 2D/3D medical image segmentation for binary and multi-class problems
-- Data I/O, preprocessing and data augmentation for biomedical images
-- Patch-wise and full image analysis
-- State-of-the-art deep learning model and metric library
-- Intuitive and fast model utilization (training, prediction)
-- Multiple automatic evaluation techniques (e.g. cross-validation)
-- Custom model, data I/O, pre-/postprocessing and metric support
-- Based on Keras with Tensorflow as backend
-
-![MIScnn workflow](docs/MIScnn.pipeline.png)
-
 ## Metrics
 
 | Syntax      | Description |
@@ -47,7 +33,7 @@ sudo pip install miseval
 First, clone miseval using git:
 
 ```sh
-git clone https://github.com/frankkramer-lab/MIScnn
+git clone https://github.com/frankkramer-lab/miseval
 ```
 
 Then, cd to the miseval folder and run the install command:
