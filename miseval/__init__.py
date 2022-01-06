@@ -35,3 +35,6 @@ metric_dict = {
     "FalsePositive": calc_FalsePositive,
     "FalseNegative": calc_FalseNegative
 }
+
+
+# some dict which says if metric needs argmax before passing if probabilities==True
