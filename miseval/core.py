@@ -27,10 +27,7 @@ from miseval import metric_dict
 #-----------------------------------------------------#
 #             Core Hub Function: Evaluate             #
 #-----------------------------------------------------#
-""" blabla. todo
-
-Metric Parameter:
-    The miseval eavluate function can be run with different metrics as backbone.
+""" The miseval eavluate function can be run with different metrics as backbone.
     You can pass the following options to the metric parameter:
     - String naming one of the metric labels, for example "DSC"
     - Directly passing a metric function, for example calc_DSC (from dice.py)
@@ -69,12 +66,19 @@ def evaluate(truth, pred, metric, multi_class=False, n_classes=2,
     if isinstance(metric, str) and metric in metric_dict:
         eval_metric = metric_dict[metric]
     else : eval_metric = metric
-
-    # if multi_class == false and classes==2
-    # run only on class==1
-
-    # else iterate with for loop over it
-
-   ...
-   if multi_class : return results
-   else : return results[1]
+    # Check some Exceptions
+    if not probabilities and n_classes == 2 and len(np.unique(truth)) > 2:
+        raise ValueError("Segmentation mask (truth) contains more than 2 classes!")
+    if not probabilities and n_classes == 2 and len(np.unique(pred)) > 2:
+        raise ValueError("Segmentation mask (pred) contains more than 2 classes!")
+    # Run binary mode       -> Compute score only for main class
+    if not multi_class and n_classes == 2:
+        score = eval_metric(truth, pred, c=1)
+        return score
+    # Run multi-class mode  -> Compute score for each class
+    else:
+        score_list = np.zeros((n_classes,))
+        for c in range(n_classes):
+            score = eval_metric(truth, pred, c=c)
+            score_list[c] = score
+        return score_list

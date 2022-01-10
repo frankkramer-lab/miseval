@@ -29,12 +29,17 @@ from miseval.confusion_matrix import calc_ConfusionMatrix, \
 #-----------------------------------------------------#
 # Metric Dictionary
 metric_dict = {
-    "ConfusionMatrix": calc_ConfusionMatrix,
     "TruePositive": calc_TruePositive,
     "TrueNegative": calc_TrueNegative,
     "FalsePositive": calc_FalsePositive,
     "FalseNegative": calc_FalseNegative
 }
 
+#-----------------------------------------------------#
+#                     Core Imports                    #
+#-----------------------------------------------------#
+from miseval.core import evaluate
 
+
+# Note:
 # some dict which says if metric needs argmax before passing if probabilities==True
