@@ -32,7 +32,11 @@ metric_dict = {
     "TruePositive": calc_TruePositive,
     "TrueNegative": calc_TrueNegative,
     "FalsePositive": calc_FalsePositive,
-    "FalseNegative": calc_FalseNegative
+    "FalseNegative": calc_FalseNegative,
+    "TP": calc_TruePositive,
+    "TN": calc_TrueNegative,
+    "FP": calc_FalsePositive,
+    "FN": calc_FalseNegative
 }
 
 #-----------------------------------------------------#

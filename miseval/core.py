@@ -63,9 +63,15 @@ Output:
 def evaluate(truth, pred, metric, multi_class=False, n_classes=2,
              probabilities=False):
     # Initialize metric function
-    if isinstance(metric, str) and metric in metric_dict:
-        eval_metric = metric_dict[metric]
-    else : eval_metric = metric
+    if isinstance(metric, str):
+        if metric in metric_dict : eval_metric = metric_dict[metric]
+        elif metric.upper() in metric_dict:
+            eval_metric = metric_dict[metric.upper()]
+        else : raise KeyError("Provided metric string not in metric_dict!" + \
+                              " : " + metric)
+    elif callable(metric) : eval_metric = metric
+    else : raise ValueError("Provided metric is neither a function nor a " + \
+                            "string!" + " : " + str(metric))
     # Check some Exceptions
     if not probabilities and n_classes == 2 and len(np.unique(truth)) > 2:
         raise ValueError("Segmentation mask (truth) contains more than 2 classes!")

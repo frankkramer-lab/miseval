@@ -44,13 +44,22 @@ class TEST_CoreEvaluate(unittest.TestCase):
     #         Evaluate : Metric Functionality         #
     #-------------------------------------------------#
     def test_evaluate_metric(self):
+        # Check miseval function callings
         for metric in metric_dict:
             self.assertTrue(metric in metric_dict)
             self.assertTrue(callable(metric_dict[metric]))
             evaluate(self.gt_bi, self.pd_bi, metric)
             evaluate(self.gt_bi, self.pd_bi, metric_dict[metric])
+        # Check custom function
         def my_custom_function(g,p,c) : return 0.0
         evaluate(self.gt_bi, self.pd_bi, my_custom_function)
+        # Check lower string metric calling
+        evaluate(self.gt_bi, self.pd_bi, "tp")
+        evaluate(self.gt_bi, self.pd_bi, "fn")
+        # Provide some non-existent metric string
+        self.assertRaises(KeyError, evaluate, self.gt_bi, self.pd_bi, "test")
+        # Provide a non callable metric
+        self.assertRaises(ValueError, evaluate, self.gt_bi, self.pd_bi, 7)
 
     #-------------------------------------------------#
     #          Evaluate : Binary with Binary          #
