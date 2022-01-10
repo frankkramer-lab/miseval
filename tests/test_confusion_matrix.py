@@ -29,7 +29,6 @@ from miseval import *
 #              Unittest: Confusion Matrix             #
 #-----------------------------------------------------#
 class TEST_ConfusionMatrix(unittest.TestCase):
-    # Create random imaging and classification data
     @classmethod
     def setUpClass(self):
         # Create ground truth
@@ -54,6 +53,7 @@ class TEST_ConfusionMatrix(unittest.TestCase):
             self.assertTrue(isinstance(score_bi, np.int64))
         # Check existance in metric_dict
         self.assertTrue("TruePositive" in metric_dict)
+        self.assertTrue(callable(metric_dict["TruePositive"]))
 
     #-------------------------------------------------#
     #            Calculate : True Negative            #
@@ -68,6 +68,7 @@ class TEST_ConfusionMatrix(unittest.TestCase):
             self.assertTrue(isinstance(score_bi, np.int64))
         # Check existance in metric_dict
         self.assertTrue("TrueNegative" in metric_dict)
+        self.assertTrue(callable(metric_dict["TrueNegative"]))
 
     #-------------------------------------------------#
     #           Calculate : False Positive            #
@@ -82,6 +83,7 @@ class TEST_ConfusionMatrix(unittest.TestCase):
             self.assertTrue(isinstance(score_bi, np.int64))
         # Check existance in metric_dict
         self.assertTrue("FalsePositive" in metric_dict)
+        self.assertTrue(callable(metric_dict["FalsePositive"]))
 
     #-------------------------------------------------#
     #           Calculate : False Negative            #
@@ -96,3 +98,4 @@ class TEST_ConfusionMatrix(unittest.TestCase):
             self.assertTrue(isinstance(score_bi, np.int64))
         # Check existance in metric_dict
         self.assertTrue("FalseNegative" in metric_dict)
+        self.assertTrue(callable(metric_dict["FalseNegative"]))
