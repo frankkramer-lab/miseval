@@ -1,0 +1,12 @@
+# Byte-compiled Python
+__pycache__/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+release.sh
+
+# PyPI
+release.sh
+.pytest_cache/
