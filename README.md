@@ -27,10 +27,12 @@ The open-source and free to use Python package miseval was developed to establis
 | ----------- | ----------- | ----------- |
 | Dice Similarity Index | "DSC", "Dice", "DiceSimilarityCoefficient" | miseval.calc_DSC() |
 | Intersection-Over-Union | "IoU", "Jaccard", "IntersectionOverUnion" | miseval.calc_IoU() |
+| Sensitivity | "Sens", "Sensitivity", "Recall", "TPR", "TruePositiveRate" | miseval.calc_Sensitivity() |
 | Accuracy | "ACC", "Accuracy", "RI", "RandIndex" | miseval.calc_Accuracy() |
 | Balanced Accuracy | "BACC", "BalancedAccuracy" | miseval.calc_BalancedAccuracy() |
 | Adjusted Rand Index | "ARI", "AdjustedRandIndex" | miseval.calc_AdjustedRandIndex() |
 | AUC | "AUC", "AUC_trapezoid" | miseval.calc_AUC() |
+| Cohen's Kappa | "KAP", "Kappa", "CohensKappa" | miseval.calc_Kappa() |
 | True Positive | "TP", "TruePositive" | miseval.calc_TruePositive() |
 | False Positive | "FP", "FalsePositive" | miseval.calc_FalsePositive() |
 | True Negative | "TN", "TrueNegative" | miseval.calc_TrueNegative() |

@@ -35,6 +35,9 @@ from miseval.auc import *
 from miseval.auc import calc_AUC_trapezoid as calc_AUC
 # Cohen's Kappa
 from miseval.kappa import *
+# Sensitivity
+from miseval.sensitivity import *
+from miseval.sensitivity import calc_Sensitivity_Sets as calc_Sensitivity
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -69,14 +72,15 @@ metric_dict = {
     "AUC_trapezoid": calc_AUC,
     "KAP": calc_Kappa,
     "Kappa": calc_Kappa,
-    "CohensKappa": calc_Kappa
+    "CohensKappa": calc_Kappa,
+    "Sensitivity": calc_Sensitivity,
+    "Sens": calc_Sensitivity,
+    "TPR": calc_Sensitivity,
+    "TruePositiveRate": calc_Sensitivity,
+    "Recall": calc_Sensitivity
 }
 
 #-----------------------------------------------------#
 #                     Core Imports                    #
 #-----------------------------------------------------#
 from miseval.core import evaluate
-
-
-# Note:
-# some dict which says if metric needs argmax before passing if probabilities==True
