@@ -33,6 +33,8 @@ from miseval.accuracy import calc_Accuracy_Sets as calc_Accuracy
 # Area under the ROC
 from miseval.auc import *
 from miseval.auc import calc_AUC_trapezoid as calc_AUC
+# Cohen's Kappa
+from miseval.kappa import *
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -64,7 +66,10 @@ metric_dict = {
     "ARI": calc_AdjustedRandIndex,
     "AdjustedRandIndex": calc_AdjustedRandIndex,
     "AUC": calc_AUC,
-    "AUC_trapezoid": calc_AUC
+    "AUC_trapezoid": calc_AUC,
+    "KAP": calc_Kappa,
+    "Kappa": calc_Kappa,
+    "CohensKappa": calc_Kappa
 }
 
 #-----------------------------------------------------#
