@@ -50,7 +50,7 @@ class TEST_DiceSimilarityCoefficient(unittest.TestCase):
         # Check multi-class score
         for i in range(5):
             score_mc = calc_DSC_Sets(self.gt_mc, self.pd_mc, c=i)
-            self.assertTrue(isinstance(score_bi, np.float64))
+            self.assertTrue(isinstance(score_mc, np.float64))
         # Check existance in metric_dict
         self.assertTrue("DSC" in metric_dict)
         self.assertTrue(callable(metric_dict["DSC"]))
@@ -70,5 +70,5 @@ class TEST_DiceSimilarityCoefficient(unittest.TestCase):
         # Check multi-class score
         for i in range(5):
             score_mc = calc_DSC_CM(self.gt_mc, self.pd_mc, c=i)
-            self.assertTrue(isinstance(score_bi, np.float64))
+            self.assertTrue(isinstance(score_mc, np.float64))
             self.assertTrue(score_mc == calc_DSC(self.gt_mc, self.pd_mc, c=i))
