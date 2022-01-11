@@ -39,9 +39,6 @@ from miseval import metric_dict
 
     A segmentation mask is allowed to have either no channel axis or just 1 (e.g. 512x512x1),
     which contains the annotation.
-    The only exception from this is by activating the probabilities parameter, which results
-    that a segmentation mask must have the same number of channels as n_classes (e.g. 512x512x8 if n_classes==8).
-    Also the probabilities have to be in range between 0 to 1 and sum up to 1 (softmax).
 
 Arguments:
     truth (NumPy Matrix):            Ground Truth segmentation mask.
@@ -49,8 +46,6 @@ Arguments:
     metric (String or Function):     Metric function. Either a function directly or encoded as String from miseval or a custom function.
     multi_class (Boolean):           Boolean parameter, if segmentation is a binary or multi-class problem. By default False -> Binary mode.
     n_classes (Integer):             Number of classes. By default 2 -> Binary
-    probabilities (Boolean):         Boolean parameter, if predicted segmentation (pred) is encoded as softmax output.
-                                     By default False -> normal class vector expected.
 
 Output:
     score (Float) or scores (List of Float)
@@ -60,8 +55,7 @@ Output:
     If multi_class == False & n_classes == 2, only a single score (float) is returned.
     If multi_class == True, multiple scores as a list are returned (for each class one score).
 """
-def evaluate(truth, pred, metric, multi_class=False, n_classes=2,
-             probabilities=False):
+def evaluate(truth, pred, metric, multi_class=False, n_classes=2):
     # Initialize metric function
     if isinstance(metric, str):
         if metric in metric_dict : eval_metric = metric_dict[metric]
