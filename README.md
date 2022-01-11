@@ -31,6 +31,9 @@ The open-source and free to use Python package miseval was developed to establis
 | False Positive | "FP", "FalsePositive" |
 | True Negative | "TN", "TrueNegative" |
 | False Negative | "FN", "FalseNegative" |
+| Accuracy | "ACC", "Accuracy", "RI", "RandIndex" |
+| Balanced Accuracy | "BACC", "BalancedAccuracy" |
+| Adjusted Rand Index | "ARI", "AdjustedRandIndex" |
 
 ## How to Use
 

@@ -27,6 +27,9 @@ from miseval.dice import calc_DSC_Sets as calc_DSC
 # Intersection-over-Union
 from miseval.jaccard import *
 from miseval.jaccard import calc_IoU_Sets as calc_IoU
+# Accuracy
+from miseval.accuracy import *
+from miseval.accuracy import calc_Accuracy_Sets as calc_Accuracy
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -46,7 +49,17 @@ metric_dict = {
     "DiceSimilarityCoefficient": calc_DSC,
     "IoU": calc_IoU,
     "Jaccard": calc_IoU,
-    "IntersectionOverUnion": calc_IoU
+    "IntersectionOverUnion": calc_IoU,
+    "ACC": calc_Accuracy,
+    "Accuracy": calc_Accuracy,
+    "RI": calc_Accuracy,
+    "RandIndex": calc_Accuracy,
+    "IntersectionOverUnion": calc_IoU,
+    "IntersectionOverUnion": calc_IoU,
+    "BACC": calc_BalancedAccuracy,
+    "BalancedAccuracy": calc_BalancedAccuracy,
+    "ARI": calc_AdjustedRandIndex,
+    "AdjustedRandIndex": calc_AdjustedRandIndex
 }
 
 #-----------------------------------------------------#
