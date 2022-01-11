@@ -70,5 +70,5 @@ class TEST_IntersectionOverUnion(unittest.TestCase):
         # Check multi-class score
         for i in range(5):
             score_mc = calc_IoU_CM(self.gt_mc, self.pd_mc, c=i)
-            self.assertTrue(isinstance(score_bi, np.float64))
+            self.assertTrue(isinstance(score_mc, np.float64))
             self.assertTrue(score_mc == calc_IoU(self.gt_mc, self.pd_mc, c=i))
