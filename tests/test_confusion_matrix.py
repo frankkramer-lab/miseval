@@ -41,6 +41,24 @@ class TEST_ConfusionMatrix(unittest.TestCase):
         self.pd_mc = np.random.randint(5, size=(32,32))
 
     #-------------------------------------------------#
+    #          Calculate : Confusion Matrix           #
+    #-------------------------------------------------#
+    def test_calc_ConfusionMatrix(self):
+        # Check binary score
+        scores_bi = calc_ConfusionMatrix(self.gt_bi, self.pd_bi, c=1)
+        self.assertTrue(isinstance(scores_bi[0], np.int64))
+        self.assertTrue(isinstance(scores_bi[1], np.int64))
+        self.assertTrue(isinstance(scores_bi[2], np.int64))
+        self.assertTrue(isinstance(scores_bi[3], np.int64))
+        # Check multi-class score
+        for i in range(5):
+            scores_mc = calc_ConfusionMatrix(self.gt_mc, self.pd_mc, c=i)
+            self.assertTrue(isinstance(scores_mc[0], np.int64))
+            self.assertTrue(isinstance(scores_mc[1], np.int64))
+            self.assertTrue(isinstance(scores_mc[2], np.int64))
+            self.assertTrue(isinstance(scores_mc[3], np.int64))
+
+    #-------------------------------------------------#
     #            Calculate : True Positive            #
     #-------------------------------------------------#
     def test_calc_TruePositive(self):
@@ -49,7 +67,7 @@ class TEST_ConfusionMatrix(unittest.TestCase):
         self.assertTrue(isinstance(score_bi, np.int64))
         # Check multi-class score
         for i in range(5):
-            score_mc = calc_TruePositive(self.gt_mc, self.gt_mc, c=i)
+            score_mc = calc_TruePositive(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_bi, np.int64))
         # Check existance in metric_dict
         self.assertTrue("TruePositive" in metric_dict)
@@ -64,7 +82,7 @@ class TEST_ConfusionMatrix(unittest.TestCase):
         self.assertTrue(isinstance(score_bi, np.int64))
         # Check multi-class score
         for i in range(5):
-            score_mc = calc_TrueNegative(self.gt_mc, self.gt_mc, c=i)
+            score_mc = calc_TrueNegative(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_bi, np.int64))
         # Check existance in metric_dict
         self.assertTrue("TrueNegative" in metric_dict)
@@ -79,7 +97,7 @@ class TEST_ConfusionMatrix(unittest.TestCase):
         self.assertTrue(isinstance(score_bi, np.int64))
         # Check multi-class score
         for i in range(5):
-            score_mc = calc_FalsePositive(self.gt_mc, self.gt_mc, c=i)
+            score_mc = calc_FalsePositive(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_bi, np.int64))
         # Check existance in metric_dict
         self.assertTrue("FalsePositive" in metric_dict)
@@ -94,7 +112,7 @@ class TEST_ConfusionMatrix(unittest.TestCase):
         self.assertTrue(isinstance(score_bi, np.int64))
         # Check multi-class score
         for i in range(5):
-            score_mc = calc_FalseNegative(self.gt_mc, self.gt_mc, c=i)
+            score_mc = calc_FalseNegative(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_bi, np.int64))
         # Check existance in metric_dict
         self.assertTrue("FalseNegative" in metric_dict)
