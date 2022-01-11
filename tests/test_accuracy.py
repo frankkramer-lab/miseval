@@ -28,7 +28,7 @@ from miseval import *
 #-----------------------------------------------------#
 #                 Unittest: Accuracy                  #
 #-----------------------------------------------------#
-class TEST_IntersectionOverUnion(unittest.TestCase):
+class TEST_Accuracy(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         # Create ground truth
