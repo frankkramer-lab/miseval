@@ -47,9 +47,9 @@ def calc_TruePositive(truth, pred, c=1):
     pd = np.equal(pred, c)
     not_gt = np.logical_not(gt)
     not_pd = np.logical_not(pd)
-    # Compute true positive rate
+    # Compute true positive
     tp = np.logical_and(pd, gt).sum()
-    # Return true positive rate
+    # Return true positive
     return tp
 
 #-----------------------------------------------------#
@@ -61,9 +61,9 @@ def calc_TrueNegative(truth, pred, c=1):
     pd = np.equal(pred, c)
     not_gt = np.logical_not(gt)
     not_pd = np.logical_not(pd)
-    # Compute true negative rate
+    # Compute true negative
     tn = np.logical_and(not_pd, not_gt).sum()
-    # Return true negative rate
+    # Return true negative
     return tn
 
 #-----------------------------------------------------#
@@ -75,9 +75,9 @@ def calc_FalsePositive(truth, pred, c=1):
     pd = np.equal(pred, c)
     not_gt = np.logical_not(gt)
     not_pd = np.logical_not(pd)
-    # Compute false positive rate
+    # Compute false positive
     fp = np.logical_and(pd, not_gt).sum()
-    # Return false positive rate
+    # Return false positive
     return fp
 
 #-----------------------------------------------------#
@@ -89,7 +89,7 @@ def calc_FalseNegative(truth, pred, c=1):
     pd = np.equal(pred, c)
     not_gt = np.logical_not(gt)
     not_pd = np.logical_not(pd)
-    # Compute false negative rate
+    # Compute false negative
     fn = np.logical_and(not_pd, gt).sum()
-    # Return false negative rate
+    # Return false negative
     return fn
