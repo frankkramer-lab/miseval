@@ -68,7 +68,8 @@ class TEST_CoreEvaluate(unittest.TestCase):
         for metric in metric_dict:
             score = evaluate(self.gt_bi, self.pd_bi, metric,
                              multi_class=False, n_classes=2, probabilities=False)
-            self.assertTrue(isinstance(score, np.int64))
+            self.assertTrue(isinstance(score, np.int64) or \
+                            isinstance(score, np.float64))
 
     #-------------------------------------------------#
     #        Evaluate : Binary with Multi-Class       #

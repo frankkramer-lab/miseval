@@ -23,6 +23,8 @@
 from miseval.confusion_matrix import calc_ConfusionMatrix, \
                                      calc_FalseNegative, calc_FalsePositive, \
                                      calc_TrueNegative, calc_TruePositive
+# Dice Similarity Coefficient
+from miseval.dice import calc_DSC, calc_DSC_v2
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -36,7 +38,10 @@ metric_dict = {
     "TP": calc_TruePositive,
     "TN": calc_TrueNegative,
     "FP": calc_FalsePositive,
-    "FN": calc_FalseNegative
+    "FN": calc_FalseNegative,
+    "DSC": calc_DSC,
+    "DiceSimilarityCoefficient": calc_DSC,
+    "Dice": calc_DSC
 }
 
 #-----------------------------------------------------#
