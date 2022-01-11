@@ -17,61 +17,41 @@
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.       #
 #==============================================================================#
 #-----------------------------------------------------#
-#                   Metric Imports                    #
+#                   Library imports                   #
 #-----------------------------------------------------#
-# Confusion Matrix
-from miseval.confusion_matrix import *
-# Dice Similarity Coefficient
-from miseval.dice import *
-from miseval.dice import calc_DSC_Sets as calc_DSC
-# Intersection-over-Union
-from miseval.jaccard import *
-from miseval.jaccard import calc_IoU_Sets as calc_IoU
-# Accuracy
-from miseval.accuracy import *
-from miseval.accuracy import calc_Accuracy_Sets as calc_Accuracy
-# Area under the ROC
-from miseval.auc import *
-from miseval.auc import calc_AUC_trapezoid as calc_AUC
+# External modules
+import numpy as np
+from sklearn.metrics import roc_auc_score
+# Internal modules
+from miseval.confusion_matrix import calc_ConfusionMatrix
 
 #-----------------------------------------------------#
-#         Access Functions to Metric Functions        #
+#            Calculate : AUC via trapezoid            #
 #-----------------------------------------------------#
-# Metric Dictionary
-metric_dict = {
-    "TruePositive": calc_TruePositive,
-    "TrueNegative": calc_TrueNegative,
-    "FalsePositive": calc_FalsePositive,
-    "FalseNegative": calc_FalseNegative,
-    "TP": calc_TruePositive,
-    "TN": calc_TrueNegative,
-    "FP": calc_FalsePositive,
-    "FN": calc_FalseNegative,
-    "DSC": calc_DSC,
-    "Dice": calc_DSC,
-    "DiceSimilarityCoefficient": calc_DSC,
-    "IoU": calc_IoU,
-    "Jaccard": calc_IoU,
-    "IntersectionOverUnion": calc_IoU,
-    "ACC": calc_Accuracy,
-    "Accuracy": calc_Accuracy,
-    "RI": calc_Accuracy,
-    "RandIndex": calc_Accuracy,
-    "IntersectionOverUnion": calc_IoU,
-    "IntersectionOverUnion": calc_IoU,
-    "BACC": calc_BalancedAccuracy,
-    "BalancedAccuracy": calc_BalancedAccuracy,
-    "ARI": calc_AdjustedRandIndex,
-    "AdjustedRandIndex": calc_AdjustedRandIndex,
-    "AUC": calc_AUC,
-    "AUC_trapezoid": calc_AUC
-}
+"""
+Formula:
+    AUC = 1 - 1/2 * (FP/(FP+TN) + FN/(FN+TP))
+
+References:
+    Powers DMW. Evaluation: from precision, recall and F-measure to ROC, informedness, markedness and correlation.
+    2020 Oct 10 [cited 2022 Jan 8]; Available from: http://arxiv.org/abs/2010.16061
+"""
+def calc_AUC_trapezoid(truth, pred, c=1):
+    # Obtain confusion mat
+    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
+    # Compute AUC
+    auc = 1 - (1/2)*((fp/(fp+tn)) + (fn/(fn+tp)))
+    # Return AUC
+    return auc
 
 #-----------------------------------------------------#
-#                     Core Imports                    #
+#           Calculate : AUC via probability           #
 #-----------------------------------------------------#
-from miseval.core import evaluate
-
-
-# Note:
-# some dict which says if metric needs argmax before passing if probabilities==True
+def calc_AUC_probability(truth, pred_prob, c=1, rounding_precision=5):
+    # Round probability to reduce unnecessary thresholds
+    prob = np.round(pred_prob[:,:,c], rounding_precision)
+    # Obtain ground truth set with associated class
+    gt = np.equal(truth, c).astype(int)
+    auc = roc_auc_score(gt.flatten(), prob.flatten())
+    # Return AUC
+    return auc

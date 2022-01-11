@@ -30,6 +30,7 @@ The open-source and free to use Python package miseval was developed to establis
 | Accuracy | "ACC", "Accuracy", "RI", "RandIndex" | miseval.calc_Accuracy() |
 | Balanced Accuracy | "BACC", "BalancedAccuracy" | miseval.calc_BalancedAccuracy() |
 | Adjusted Rand Index | "ARI", "AdjustedRandIndex" | miseval.calc_AdjustedRandIndex() |
+| AUC | "AUC", "AUC_trapezoid" | miseval.calc_AUC() |
 | True Positive | "TP", "TruePositive" | miseval.calc_TruePositive() |
 | False Positive | "FP", "FalsePositive" | miseval.calc_FalsePositive() |
 | True Negative | "TN", "TrueNegative" | miseval.calc_TrueNegative() |
