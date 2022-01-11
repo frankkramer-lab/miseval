@@ -40,6 +40,7 @@ def calc_Kappa(truth, pred, c=1):
     # Compute kappa
     fa = tp + tn
     fc = ((tn+fn)*(tn+fp) + (fp+tp)*(fn+tp)) / (tp+tn+fp+fn)
-    kappa = (fa-fc) / ((tp+tn+fp+fn)-fc)
+    if ((tp+tn+fp+fn)-fc) != 0 : kappa = (fa-fc) / ((tp+tn+fp+fn)-fc)
+    else : kappa = 0.0
     # Return kappa score
     return kappa

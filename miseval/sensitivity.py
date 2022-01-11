@@ -32,7 +32,8 @@ def calc_Sensitivity_Sets(truth, pred, c=1):
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
     # Calculate sensitivity
-    sens = np.logical_and(pd, gt).sum() / gt.sum()
+    if gt.sum() != 0 : sens = np.logical_and(pd, gt).sum() / gt.sum()
+    else : sens = 0.0
     # Return sensitivity
     return sens
 
@@ -43,6 +44,7 @@ def calc_Sensitivity_CM(truth, pred, c=1):
     # Obtain confusion matrix
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Calculate sensitivity
-    sens = (tp) / (tp + fn)
+    if (tp + fn) != 0 : sens = (tp) / (tp + fn)
+    else : sens = 0.0
     # Return sensitivity
     return sens

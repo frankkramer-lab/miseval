@@ -32,9 +32,8 @@ def calc_Precision_Sets(truth, pred, c=1):
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
     # Calculate precision
-    if pd.sum() == 0.0 : prec = 0.0
-    else:
-        prec = np.logical_and(pd, gt).sum() / pd.sum()
+    if pd.sum() != 0 : prec = np.logical_and(pd, gt).sum() / pd.sum()
+    else : prec = 0.0
     # Return precision
     return prec
 
@@ -45,6 +44,7 @@ def calc_Precision_CM(truth, pred, c=1):
     # Obtain confusion matrix
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Calculate precision
-    prec = (tp) / (tp + fp)
+    if (tp + fp) != 0 : prec = (tp) / (tp + fp)
+    else : prec = 0.0
     # Return precision
     return prec

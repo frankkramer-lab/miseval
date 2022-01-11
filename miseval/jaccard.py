@@ -28,14 +28,14 @@ from miseval.confusion_matrix import calc_ConfusionMatrix
 #              Calculate : IoU via Sets               #
 #-----------------------------------------------------#
 def calc_IoU_Sets(truth, pred, c=1):
-    try:
-        # Obtain sets with associated class
-        gt = np.equal(truth, c)
-        pd = np.equal(pred, c)
-        # Calculate IoU
+    # Obtain sets with associated class
+    gt = np.equal(truth, c)
+    pd = np.equal(pred, c)
+    # Calculate IoU
+    if  (pd.sum() + gt.sum() - np.logical_and(pd, gt).sum()) != 0:
         iou = np.logical_and(pd, gt).sum() / \
               (pd.sum() + gt.sum() - np.logical_and(pd, gt).sum())
-    except ZeroDivisionError : iou = 0.0
+    else : iou = 0.0
     # Return computed IoU
     return iou
 
@@ -43,11 +43,10 @@ def calc_IoU_Sets(truth, pred, c=1):
 #             Calculate : IoU via ConfMat             #
 #-----------------------------------------------------#
 def calc_IoU_CM(truth, pred, c=1):
-    try:
-        # Obtain confusion mat
-        tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-        # Calculate IoU
-        iou = tp / (tp + fp + fn)
-    except ZeroDivisionError : iou = 0.0
+    # Obtain confusion mat
+    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
+    # Calculate IoU
+    if (tp + fp + fn) != 0 : iou = tp / (tp + fp + fn)
+    else : iou = 0.0
     # Return computed IoU
     return iou

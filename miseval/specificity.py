@@ -28,13 +28,13 @@ from miseval.confusion_matrix import calc_ConfusionMatrix
 #           Calculate : Specificity via Sets          #
 #-----------------------------------------------------#
 def calc_Specificity_Sets(truth, pred, c=1):
-    try:
-        # Obtain sets with associated class
-        not_gt = np.logical_not(np.equal(truth, c))
-        not_pd = np.logical_not(np.equal(pred, c))
-        # Calculate specificity
+    # Obtain sets with associated class
+    not_gt = np.logical_not(np.equal(truth, c))
+    not_pd = np.logical_not(np.equal(pred, c))
+    # Calculate specificity
+    if (not_gt).sum() != 0:
         spec = np.logical_and(not_pd, not_gt).sum() / (not_gt).sum()
-    except ZeroDivisionError : spec = 0.0
+    else : spec = 0.0
     # Return specificity
     return spec
 
@@ -45,6 +45,7 @@ def calc_Specificity_CM(truth, pred, c=1):
     # Obtain confusion matrix
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Calculate specificity
-    spec = (tn) / (tn + fp)
+    if (tn + fp) != 0 : spec = (tn) / (tn + fp)
+    else : spec = 0.0
     # Return specificity
     return spec

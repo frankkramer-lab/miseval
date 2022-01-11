@@ -22,6 +22,7 @@
 # External modules
 import numpy as np
 from sklearn.metrics import balanced_accuracy_score, adjusted_rand_score
+import warnings
 # Internal modules
 from miseval.confusion_matrix import calc_ConfusionMatrix
 
@@ -29,16 +30,14 @@ from miseval.confusion_matrix import calc_ConfusionMatrix
 #            Calculate : Accuracy via Sets            #
 #-----------------------------------------------------#
 def calc_Accuracy_Sets(truth, pred, c=1):
-    try:
-        # Obtain sets with associated class
-        gt = np.equal(truth, c)
-        pd = np.equal(pred, c)
-        not_gt = np.logical_not(gt)
-        not_pd = np.logical_not(pd)
-        # Calculate Accuracy
-        acc = (np.logical_and(pd, gt).sum() + \
-               np.logical_and(not_pd, not_gt).sum()) / gt.size
-    except ZeroDivisionError : acc = 0.0
+    # Obtain sets with associated class
+    gt = np.equal(truth, c)
+    pd = np.equal(pred, c)
+    not_gt = np.logical_not(gt)
+    not_pd = np.logical_not(pd)
+    # Calculate Accuracy
+    acc = (np.logical_and(pd, gt).sum() + \
+           np.logical_and(not_pd, not_gt).sum()) / gt.size
     # Return computed Accuracy
     return acc
 
@@ -46,12 +45,10 @@ def calc_Accuracy_Sets(truth, pred, c=1):
 #           Calculate : Accuracy via ConfMat          #
 #-----------------------------------------------------#
 def calc_Accuracy_CM(truth, pred, c=1):
-    try:
-        # Obtain confusion mat
-        tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-        # Calculate Accuracy
-        acc = (tp + tn) / (tp + tn + fp + fn)
-    except ZeroDivisionError : acc = 0.0
+    # Obtain confusion mat
+    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
+    # Calculate Accuracy
+    acc = (tp + tn) / (tp + tn + fp + fn)
     # Return computed Accuracy
     return acc
 
@@ -76,7 +73,11 @@ def calc_BalancedAccuracy(truth, pred, c=1):
     gt = np.equal(truth, c).flatten()
     pd = np.equal(pred, c).flatten()
     # Compute BACC via scikit-learn
-    return balanced_accuracy_score(gt, pd)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        bacc = balanced_accuracy_score(gt, pd)
+    # Return BACC score
+    return bacc
 
 #-----------------------------------------------------#
 #           Calculate : Adjusted Rand Index           #
@@ -100,4 +101,8 @@ def calc_AdjustedRandIndex(truth, pred, c=1):
     gt = np.equal(truth, c).flatten()
     pd = np.equal(pred, c).flatten()
     # Compute ARI via scikit-learn
-    return adjusted_rand_score(gt, pd)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        ari = adjusted_rand_score(gt, pd)
+    # Return ARI score
+    return ari

@@ -40,7 +40,11 @@ def calc_AUC_trapezoid(truth, pred, c=1):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Compute AUC
-    auc = 1 - (1/2)*((fp/(fp+tn)) + (fn/(fn+tp)))
+    if (fp+tn) != 0 : x = fp/(fp+tn)
+    else : x = 0.0
+    if (fn+tp) != 0 : y = fn/(fn+tp)
+    else : y = 0.0
+    auc = 1 - (1/2)*(x + y)
     # Return AUC
     return auc
 
