@@ -25,9 +25,9 @@ import numpy as np
 from miseval.confusion_matrix import calc_ConfusionMatrix
 
 #-----------------------------------------------------#
-#         Calculate : Dice Similarity Matrix          #
+#              Calculate : DSC via Sets               #
 #-----------------------------------------------------#
-def calc_DSC(truth, pred, c=1):
+def calc_DSC_Sets(truth, pred, c=1):
     try:
         # Obtain sets with associated class
         gt = np.equal(truth, c)
@@ -40,9 +40,9 @@ def calc_DSC(truth, pred, c=1):
     return dice
 
 #-----------------------------------------------------#
-#              Calculate : DSC Variant #2             #
+#             Calculate : DSC via ConfMat             #
 #-----------------------------------------------------#
-def calc_DSC_v2(truth, pred, c=1):
+def calc_DSC_CM(truth, pred, c=1):
     try:
         # Obtain confusion mat
         tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)

@@ -20,11 +20,10 @@
 #                   Metric Imports                    #
 #-----------------------------------------------------#
 # Confusion Matrix
-from miseval.confusion_matrix import calc_ConfusionMatrix, \
-                                     calc_FalseNegative, calc_FalsePositive, \
-                                     calc_TrueNegative, calc_TruePositive
+from miseval.confusion_matrix import *
 # Dice Similarity Coefficient
-from miseval.dice import calc_DSC, calc_DSC_v2
+from miseval.dice import *
+from miseval.dice import calc_DSC_Sets as calc_DSC
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
