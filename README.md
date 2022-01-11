@@ -23,17 +23,17 @@ The open-source and free to use Python package miseval was developed to establis
 
 ## Implemented Metrics
 
-| Metric      | Index in miseval |
-| ----------- | ----------- |
-| Dice Similarity Index | "DSC", "Dice", "DiceSimilarityCoefficient" |
-| Intersection-Over-Union | "IoU", "Jaccard", "IntersectionOverUnion" |
-| True Positive | "TP", "TruePositive" |
-| False Positive | "FP", "FalsePositive" |
-| True Negative | "TN", "TrueNegative" |
-| False Negative | "FN", "FalseNegative" |
-| Accuracy | "ACC", "Accuracy", "RI", "RandIndex" |
-| Balanced Accuracy | "BACC", "BalancedAccuracy" |
-| Adjusted Rand Index | "ARI", "AdjustedRandIndex" |
+| Metric      | Index in miseval | Function in miseval |
+| ----------- | ----------- | ----------- |
+| Dice Similarity Index | "DSC", "Dice", "DiceSimilarityCoefficient" | miseval.calc_DSC() |
+| Intersection-Over-Union | "IoU", "Jaccard", "IntersectionOverUnion" | miseval.calc_IoU() |
+| Accuracy | "ACC", "Accuracy", "RI", "RandIndex" | miseval.calc_Accuracy() |
+| Balanced Accuracy | "BACC", "BalancedAccuracy" | miseval.calc_BalancedAccuracy() |
+| Adjusted Rand Index | "ARI", "AdjustedRandIndex" | miseval.calc_AdjustedRandIndex() |
+| True Positive | "TP", "TruePositive" | miseval.calc_TruePositive() |
+| False Positive | "FP", "FalsePositive" | miseval.calc_FalsePositive() |
+| True Negative | "TN", "TrueNegative" | miseval.calc_TrueNegative() |
+| False Negative | "FN", "FalseNegative" | miseval.calc_FalseNegative() |
 
 ## How to Use
 
