@@ -58,7 +58,19 @@ def calc_Accuracy_CM(truth, pred, c=1):
 #-----------------------------------------------------#
 #            Calculate : Balanced Accuracy            #
 #-----------------------------------------------------#
-""" BACC = (Sensitivity + Specificity) / 2          """
+"""
+Formula:
+    BACC = (Sensitivity + Specificity) / 2
+
+References:
+[1] Brodersen, K.H.; Ong, C.S.; Stephan, K.E.; Buhmann, J.M. (2010).
+    The balanced accuracy and its posterior distribution.
+    Proceedings of the 20th International Conference on Pattern Recognition, 3121-24.
+
+[2] John. D. Kelleher, Brian Mac Namee, Aoife D’Arcy, (2015).
+    Fundamentals of Machine Learning for Predictive Data Analytics: Algorithms, Worked Examples, and Case Studies.
+    https://mitpress.mit.edu/books/fundamentals-machine-learning-predictive-data-analytics
+"""
 def calc_BalancedAccuracy(truth, pred, c=1):
     # Obtain sets with associated class
     gt = np.equal(truth, c).flatten()
@@ -69,7 +81,20 @@ def calc_BalancedAccuracy(truth, pred, c=1):
 #-----------------------------------------------------#
 #           Calculate : Adjusted Rand Index           #
 #-----------------------------------------------------#
-""" ARI = (RI - Expected_RI) / (max(RI) - Expected_RI) """
+"""
+Formula:
+    ARI = (RI - Expected_RI) / (max(RI) - Expected_RI)
+
+References:
+[1] L. Hubert and P. Arabie, Comparing Partitions, Journal of Classification 1985
+    https://link.springer.com/article/10.1007%2FBF01908075
+
+
+[2] D. Steinley, Properties of the Hubert-Arabie adjusted Rand index,
+    Psychological Methods 2004
+
+[3] https://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index
+"""
 def calc_AdjustedRandIndex(truth, pred, c=1):
     # Obtain sets with associated class
     gt = np.equal(truth, c).flatten()
