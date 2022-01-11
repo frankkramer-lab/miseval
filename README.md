@@ -35,6 +35,8 @@ The open-source and free to use Python package miseval was developed to establis
 | Adjusted Rand Index | "ARI", "AdjustedRandIndex" | miseval.calc_AdjustedRandIndex() |
 | AUC | "AUC", "AUC_trapezoid" | miseval.calc_AUC() |
 | Cohen's Kappa | "KAP", "Kappa", "CohensKappa" | miseval.calc_Kappa() |
+| Hausdorff Distance | "HD", "HausdorffDistance" | miseval.calc_SimpleHausdorffDistance() |
+| Average Hausdorff Distance | "AHD", "AverageHausdorffDistance" | miseval.calc_AverageHausdorffDistance() |
 | Volumetric Similarity | "VS", "VolumetricSimilarity" | miseval.calc_VolumetricSimilarity() |
 | True Positive | "TP", "TruePositive" | miseval.calc_TruePositive() |
 | False Positive | "FP", "FalsePositive" | miseval.calc_FalsePositive() |

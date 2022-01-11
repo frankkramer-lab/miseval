@@ -27,14 +27,6 @@ from miseval.dice import calc_DSC_Sets as calc_DSC
 # Intersection-over-Union
 from miseval.jaccard import *
 from miseval.jaccard import calc_IoU_Sets as calc_IoU
-# Accuracy
-from miseval.accuracy import *
-from miseval.accuracy import calc_Accuracy_Sets as calc_Accuracy
-# Area under the ROC
-from miseval.auc import *
-from miseval.auc import calc_AUC_trapezoid as calc_AUC
-# Cohen's Kappa
-from miseval.kappa import *
 # Sensitivity
 from miseval.sensitivity import *
 from miseval.sensitivity import calc_Sensitivity_Sets as calc_Sensitivity
@@ -44,6 +36,17 @@ from miseval.specificity import calc_Specificity_Sets as calc_Specificity
 # Precision
 from miseval.precision import *
 from miseval.precision import calc_Precision_Sets as calc_Precision
+# Accuracy
+from miseval.accuracy import *
+from miseval.accuracy import calc_Accuracy_Sets as calc_Accuracy
+# Area under the ROC
+from miseval.auc import *
+from miseval.auc import calc_AUC_trapezoid as calc_AUC
+# Cohen's Kappa
+from miseval.kappa import *
+# Hausdorff Distance
+from miseval.hausdorff import calc_SimpleHausdorffDistance, \
+                              calc_AverageHausdorffDistance
 # Volumetric Similarity
 from miseval.volumetric_similarity import *
 
@@ -93,7 +96,11 @@ metric_dict = {
     "PREC": calc_Precision,
     "Precision": calc_Precision,
     "VS": calc_VolumetricSimilarity,
-    "VolumetricSimilarity": calc_VolumetricSimilarity
+    "VolumetricSimilarity": calc_VolumetricSimilarity,
+    "HD": calc_SimpleHausdorffDistance,
+    "HausdorffDistance": calc_SimpleHausdorffDistance,
+    "AHD": calc_AverageHausdorffDistance,
+    "AverageHausdorffDistance": calc_AverageHausdorffDistance
 }
 
 #-----------------------------------------------------#
