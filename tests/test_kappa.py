@@ -26,7 +26,7 @@ import unittest
 from miseval import *
 
 #-----------------------------------------------------#
-#            Unittest: Area under the ROC             #
+#               Unittest: Cohen's Kappa               #
 #-----------------------------------------------------#
 class TEST_Kappa(unittest.TestCase):
     @classmethod

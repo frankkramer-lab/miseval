@@ -26,9 +26,9 @@ import unittest
 from miseval import evaluate, metric_dict
 
 #-----------------------------------------------------#
-#             Unittest: Core Evaluate Hub             #
+#          Unittest: Edge Cases & Exceptions          #
 #-----------------------------------------------------#
-class TEST_CoreEvaluate(unittest.TestCase):
+class TEST_EdgeCases(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         # Create identical ground truth & prediction
