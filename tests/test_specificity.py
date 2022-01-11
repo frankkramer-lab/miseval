@@ -52,8 +52,8 @@ class TEST_Specificity(unittest.TestCase):
             score_mc = calc_Specificity_Sets(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_mc, np.float64))
         # Check existance in metric_dict
-        self.assertTrue("Spec" in metric_dict)
-        self.assertTrue(callable(metric_dict["Spec"]))
+        self.assertTrue("SPEC" in metric_dict)
+        self.assertTrue(callable(metric_dict["SPEC"]))
         self.assertTrue("Specificity" in metric_dict)
         self.assertTrue(callable(metric_dict["Specificity"]))
         self.assertTrue("TNR" in metric_dict)

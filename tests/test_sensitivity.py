@@ -52,8 +52,8 @@ class TEST_Sensitivity(unittest.TestCase):
             score_mc = calc_Sensitivity_Sets(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_mc, np.float64))
         # Check existance in metric_dict
-        self.assertTrue("Sens" in metric_dict)
-        self.assertTrue(callable(metric_dict["Sens"]))
+        self.assertTrue("SENS" in metric_dict)
+        self.assertTrue(callable(metric_dict["SENS"]))
         self.assertTrue("Sensitivity" in metric_dict)
         self.assertTrue(callable(metric_dict["Sensitivity"]))
         self.assertTrue("TPR" in metric_dict)
