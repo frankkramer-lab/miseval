@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
    name='miseval',
-   version='0.1.0',
+   version='1.0.0',
    description='A Metric Library for Medical Image Segmentation Evaluation',
    url='https://github.com/frankkramer-lab/miseval',
    author='Dominik Müller',
@@ -18,7 +18,9 @@ setup(
    packages=find_packages(),
    python_requires='>=3.7',
    install_requires=['numpy>=1.22.0',
-                     'scikit-learn>=1.0.2'],
+                     'scikit-learn>=1.0.2',
+                     'scipy>=1.7.3',
+                     'hausdorff>=0.2.6'],
    classifiers=["Programming Language :: Python :: 3",
                 "Programming Language :: Python :: 3.7",
                 "Programming Language :: Python :: 3.8",
