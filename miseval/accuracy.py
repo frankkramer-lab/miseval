@@ -77,7 +77,7 @@ def calc_BalancedAccuracy(truth, pred, c=1):
         warnings.simplefilter("ignore")
         bacc = balanced_accuracy_score(gt, pd)
     # Return BACC score
-    return bacc
+    return np.float64(bacc)
 
 #-----------------------------------------------------#
 #           Calculate : Adjusted Rand Index           #
@@ -105,4 +105,4 @@ def calc_AdjustedRandIndex(truth, pred, c=1):
         warnings.simplefilter("ignore")
         ari = adjusted_rand_score(gt, pd)
     # Return ARI score
-    return ari
+    return np.float64(ari)
