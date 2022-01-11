@@ -138,10 +138,19 @@ Bavaria, Germany
 
 ## How to cite / More information
 
-Coming soon
+Dominik Müller, Iñaki Soto-Rey and Frank Kramer. (2022)   
+A Guideline on Evaluation Metrics for Medical Image Segmentation.  
+arXiv e-print: Coming soon
 
 ```
-coming soon
+Article{misevalMUELLER2022,
+  title={A Guideline on Evaluation Metrics for Medical Image Segmentation},
+  author={Dominik Müller, Iñaki Soto-Rey and Frank Kramer},
+  year={2022}
+  eprint={COMING SOON},
+  archivePrefix={arXiv},
+  primaryClass={eess.IV}
+}
 ```
 
 Thank you for citing our work.
