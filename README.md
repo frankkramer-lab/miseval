@@ -1,8 +1,10 @@
 # miseval: a metric library for Medical Image Segmentation EVALuation
 
-```
-placeholder for badges
-```
+[![shield_python](https://img.shields.io/pypi/pyversions/miseval?style=for-the-badge)](https://www.python.org/)
+[![shield_build](https://img.shields.io/github/workflow/status/frankkramer-lab/miseval/Python%20package?style=for-the-badge)](https://github.com/frankkramer-lab/miseval)
+[![shield_pypi_version](https://img.shields.io/pypi/v/miseval?style=for-the-badge)](https://pypi.org/project/miseval/)
+[![shield_pypi_downloads](https://img.shields.io/pypi/dm/miseval?style=for-the-badge)](https://pypistats.org/packages/miseval)
+[![shield_license](https://img.shields.io/github/license/frankkramer-lab/miseval?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 The open-source and free to use Python package miseval was developed to establish a standardized medical image segmentation evaluation procedure. We hope that our this will help improve evaluation quality, reproducibility, and comparability in future studies in the field of medical image segmentation.
 
@@ -66,7 +68,7 @@ Every metric in miseval can be called via our core function `evaluate()`.
 The miseval eavluate function can be run with different metrics as backbone.  
 You can pass the following options to the metric parameter:
 - String naming one of the metric labels, for example "DSC"
-- Directly passing a metric function, for example calc_DSC (from dice.py)
+- Directly passing a metric function, for example calc_DSC_Sets (from dice.py)
 - Passing a custom metric function
 
 List of metrics : See `miseval/__init__.py` under section "Access Functions to Metric Functions"
