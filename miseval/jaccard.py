@@ -17,43 +17,37 @@
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.       #
 #==============================================================================#
 #-----------------------------------------------------#
-#                   Metric Imports                    #
+#                   Library imports                   #
 #-----------------------------------------------------#
-# Confusion Matrix
-from miseval.confusion_matrix import *
-# Dice Similarity Coefficient
-from miseval.dice import *
-from miseval.dice import calc_DSC_Sets as calc_DSC
-# Intersection-over-Union
-from miseval.jaccard import *
-from miseval.jaccard import calc_IoU_Sets as calc_IoU
+# External modules
+import numpy as np
+# Internal modules
+from miseval.confusion_matrix import calc_ConfusionMatrix
 
 #-----------------------------------------------------#
-#         Access Functions to Metric Functions        #
+#              Calculate : IoU via Sets               #
 #-----------------------------------------------------#
-# Metric Dictionary
-metric_dict = {
-    "TruePositive": calc_TruePositive,
-    "TrueNegative": calc_TrueNegative,
-    "FalsePositive": calc_FalsePositive,
-    "FalseNegative": calc_FalseNegative,
-    "TP": calc_TruePositive,
-    "TN": calc_TrueNegative,
-    "FP": calc_FalsePositive,
-    "FN": calc_FalseNegative,
-    "DSC": calc_DSC,
-    "Dice": calc_DSC,
-    "DiceSimilarityCoefficient": calc_DSC,
-    "IoU": calc_IoU,
-    "Jaccard": calc_IoU,
-    "IntersectionOverUnion": calc_IoU
-}
+def calc_IoU_Sets(truth, pred, c=1):
+    try:
+        # Obtain sets with associated class
+        gt = np.equal(truth, c)
+        pd = np.equal(pred, c)
+        # Calculate IoU
+        iou = np.logical_and(pd, gt).sum() / \
+              (pd.sum() + gt.sum() - np.logical_and(pd, gt).sum())
+    except ZeroDivisionError : iou = 0.0
+    # Return computed IoU
+    return iou
 
 #-----------------------------------------------------#
-#                     Core Imports                    #
+#             Calculate : IoU via ConfMat             #
 #-----------------------------------------------------#
-from miseval.core import evaluate
-
-
-# Note:
-# some dict which says if metric needs argmax before passing if probabilities==True
+def calc_IoU_CM(truth, pred, c=1):
+    try:
+        # Obtain confusion mat
+        tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
+        # Calculate IoU
+        iou = tp / (tp + fp + fn)
+    except ZeroDivisionError : iou = 0.0
+    # Return computed IoU
+    return iou
