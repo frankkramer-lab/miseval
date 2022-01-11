@@ -12,7 +12,7 @@ The open-source and free to use Python package miseval was developed to establis
 2. Use AHD for interpretation on point position sensitivity (contour) if needed.
 3. Avoid any interpretations based on high pixel accuracy scores.
 4. Provide next to DSC also IoU, Sensitivity, and Specificity for method comparability.
-5. Provide sample visualizations, comparing the annotated and predicted segmentation, for visual evaluation as well as to avoid statical bias.
+5. Provide sample visualizations, comparing the annotated and predicted segmentation, for visual evaluation as well as to avoid statistical bias.
 6. Avoid cherry-picking high-scoring samples.
 7. Provide histograms or box plots showing the scoring distribution across the dataset.
 8. For multi-class problems, provide metric computations for each class individually.
@@ -50,13 +50,13 @@ pred_mc = np.random.randint(5, size=(64,64))  # multi-class (5 classes)
 
 # Run binary evaluation
 dice = evaluate(real_bi, pred_bi, metric="DSC")    
-# returns single np.float64 e.g. 0.75
+  # returns single np.float64 e.g. 0.75
 
 # Run multi-class evaluation
 dice_list = evaluate(real_mc, pred_mc, metric="DSC", multi_class=True,
                      n_classes=5)   
- # returns array of np.float64 e.g. [0.9, 0.2, 0.6, 0.0, 0.4]
- # for each class, one score
+  # returns array of np.float64 e.g. [0.9, 0.2, 0.6, 0.0, 0.4]
+  # for each class, one score
 ```
 
 #### Core function: Evaluate()
