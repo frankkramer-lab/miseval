@@ -67,9 +67,9 @@ def evaluate(truth, pred, metric, multi_class=False, n_classes=2):
     else : raise ValueError("Provided metric is neither a function nor a " + \
                             "string!" + " : " + str(metric))
     # Check some Exceptions
-    if not probabilities and n_classes == 2 and len(np.unique(truth)) > 2:
+    if n_classes == 2 and len(np.unique(truth)) > 2:
         raise ValueError("Segmentation mask (truth) contains more than 2 classes!")
-    if not probabilities and n_classes == 2 and len(np.unique(pred)) > 2:
+    if n_classes == 2 and len(np.unique(pred)) > 2:
         raise ValueError("Segmentation mask (pred) contains more than 2 classes!")
     # Run binary mode       -> Compute score only for main class
     if not multi_class and n_classes == 2:
