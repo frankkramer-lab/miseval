@@ -44,6 +44,8 @@ from miseval.specificity import calc_Specificity_Sets as calc_Specificity
 # Precision
 from miseval.precision import *
 from miseval.precision import calc_Precision_Sets as calc_Precision
+# Volumetric Similarity
+from miseval.volumetric_similarity import *
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -89,7 +91,9 @@ metric_dict = {
     "TNR": calc_Specificity,
     "TrueNegativeRate": calc_Specificity,
     "PREC": calc_Precision,
-    "Precision": calc_Precision
+    "Precision": calc_Precision,
+    "VS": calc_VolumetricSimilarity,
+    "VolumetricSimilarity": calc_VolumetricSimilarity
 }
 
 #-----------------------------------------------------#
