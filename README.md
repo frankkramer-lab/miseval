@@ -28,6 +28,7 @@ The open-source and free to use Python package miseval was developed to establis
 | Dice Similarity Index | "DSC", "Dice", "DiceSimilarityCoefficient" | miseval.calc_DSC() |
 | Intersection-Over-Union | "IoU", "Jaccard", "IntersectionOverUnion" | miseval.calc_IoU() |
 | Sensitivity | "Sens", "Sensitivity", "Recall", "TPR", "TruePositiveRate" | miseval.calc_Sensitivity() |
+| Specificity | "Spec", "Specificity", "TNR", "TrueNegativeRate" | miseval.calc_Specificity() |
 | Accuracy | "ACC", "Accuracy", "RI", "RandIndex" | miseval.calc_Accuracy() |
 | Balanced Accuracy | "BACC", "BalancedAccuracy" | miseval.calc_BalancedAccuracy() |
 | Adjusted Rand Index | "ARI", "AdjustedRandIndex" | miseval.calc_AdjustedRandIndex() |

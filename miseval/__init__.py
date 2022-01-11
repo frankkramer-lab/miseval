@@ -38,6 +38,9 @@ from miseval.kappa import *
 # Sensitivity
 from miseval.sensitivity import *
 from miseval.sensitivity import calc_Sensitivity_Sets as calc_Sensitivity
+# Specificity
+from miseval.specificity import *
+from miseval.specificity import calc_Specificity_Sets as calc_Specificity
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -77,7 +80,11 @@ metric_dict = {
     "Sens": calc_Sensitivity,
     "TPR": calc_Sensitivity,
     "TruePositiveRate": calc_Sensitivity,
-    "Recall": calc_Sensitivity
+    "Recall": calc_Sensitivity,
+    "Spec": calc_Specificity,
+    "Specificity": calc_Specificity,
+    "TNR": calc_Specificity,
+    "TrueNegativeRate": calc_Specificity
 }
 
 #-----------------------------------------------------#
