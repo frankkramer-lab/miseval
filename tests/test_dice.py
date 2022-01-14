@@ -47,17 +47,12 @@ class TEST_DiceSimilarityCoefficient(unittest.TestCase):
         # Check binary score
         score_bi = calc_DSC_Sets(self.gt_bi, self.pd_bi, c=1)
         self.assertTrue(isinstance(score_bi, np.float64))
+        self.assertTrue(score_bi == calc_DSC(self.gt_bi, self.pd_bi, c=1))
         # Check multi-class score
         for i in range(5):
             score_mc = calc_DSC_Sets(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_mc, np.float64))
-        # Check existance in metric_dict
-        self.assertTrue("DSC" in metric_dict)
-        self.assertTrue(callable(metric_dict["DSC"]))
-        self.assertTrue("Dice" in metric_dict)
-        self.assertTrue(callable(metric_dict["Dice"]))
-        self.assertTrue("DiceSimilarityCoefficient" in metric_dict)
-        self.assertTrue(callable(metric_dict["DiceSimilarityCoefficient"]))
+            self.assertTrue(score_mc == calc_DSC(self.gt_mc, self.pd_mc, c=i))
 
     #-------------------------------------------------#
     #            Calculate : DSC Variant #2           #
@@ -72,3 +67,22 @@ class TEST_DiceSimilarityCoefficient(unittest.TestCase):
             score_mc = calc_DSC_CM(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_mc, np.float64))
             self.assertTrue(score_mc == calc_DSC(self.gt_mc, self.pd_mc, c=i))
+
+    #-------------------------------------------------#
+    #            Calculate : DSC Variant #1           #
+    #-------------------------------------------------#
+    def test_calc_DSC_Enhanced(self):
+        # Check binary score
+        score_bi = calc_DSC_Enhanced(self.gt_bi, self.pd_bi, c=1)
+        self.assertTrue(isinstance(score_bi, np.float64))
+        # Check multi-class score
+        for i in range(5):
+            score_mc = calc_DSC_Enhanced(self.gt_mc, self.pd_mc, c=i)
+            self.assertTrue(isinstance(score_mc, np.float64))
+        # Check existance in metric_dict
+        self.assertTrue("DSC" in metric_dict)
+        self.assertTrue(callable(metric_dict["DSC"]))
+        self.assertTrue("Dice" in metric_dict)
+        self.assertTrue(callable(metric_dict["Dice"]))
+        self.assertTrue("DiceSimilarityCoefficient" in metric_dict)
+        self.assertTrue(callable(metric_dict["DiceSimilarityCoefficient"]))

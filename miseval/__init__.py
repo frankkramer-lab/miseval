@@ -23,7 +23,7 @@
 from miseval.confusion_matrix import *
 # Dice Similarity Coefficient
 from miseval.dice import *
-from miseval.dice import calc_DSC_Sets as calc_DSC
+from miseval.dice import calc_DSC_Enhanced as calc_DSC
 # Intersection-over-Union
 from miseval.jaccard import *
 from miseval.jaccard import calc_IoU_Sets as calc_IoU

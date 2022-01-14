@@ -25,6 +25,30 @@ import numpy as np
 from miseval.confusion_matrix import calc_ConfusionMatrix
 
 #-----------------------------------------------------#
+#              Calculate : DSC Enhanced               #
+#-----------------------------------------------------#
+"""
+    Reference:  Dominik Müller, Adrian Pfleiderer & Frank Kramer. (2022).
+                miseval: a metric library for Medical Image Segmentation EVALuation.
+                https://github.com/frankkramer-lab/miseval
+
+    Custom Dice Similarity Coefficient implementation which returns 1.0,
+    if two empty masks are compared.
+    This allow rewarding models which correctly predict empty masks.
+"""
+def calc_DSC_Enhanced(truth, pred, c=1):
+    # Obtain sets with associated class
+    gt = np.equal(truth, c)
+    pd = np.equal(pred, c)
+    # Calculate Dice
+    if gt.sum() == 0 and pd.sum() == 0 : dice = 1.0
+    elif (pd.sum() + gt.sum()) != 0:
+        dice = 2*np.logical_and(pd, gt).sum() / (pd.sum() + gt.sum())
+    else : dice = 0.0
+    # Return computed Dice
+    return dice
+
+#-----------------------------------------------------#
 #              Calculate : DSC via Sets               #
 #-----------------------------------------------------#
 def calc_DSC_Sets(truth, pred, c=1):
