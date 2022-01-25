@@ -143,18 +143,18 @@ Bavaria, Germany
 
 ## How to cite / More information
 
-Dominik Müller, Iñaki Soto-Rey and Frank Kramer. (2022)   
-A Guideline on Evaluation Metrics for Medical Image Segmentation.  
-arXiv e-print: Coming soon
+Dominik Müller, Dennis Hartmann, Philip Meyer, Florian Auer, Iñaki Soto-Rey, Frank Kramer. (2022)   
+MISeval: a Metric Library for Medical Image Segmentation Evaluation.  
+arXiv e-print: https://arxiv.org/abs/2201.09395
 
 ```
-Article{misevalMUELLER2022,
-  title={A Guideline on Evaluation Metrics for Medical Image Segmentation},
-  author={Dominik Müller, Iñaki Soto-Rey and Frank Kramer},
+@inproceedings{misevalMUELLER2022,
+  title={MISeval: a Metric Library for Medical Image Segmentation Evaluation},
+  author={Dominik Müller, Dennis Hartmann, Philip Meyer, Florian Auer, Iñaki Soto-Rey, Frank Kramer},
   year={2022}
-  eprint={COMING SOON},
+  eprint={2201.09395},
   archivePrefix={arXiv},
-  primaryClass={eess.IV}
+  primaryClass={cs.CV}
 }
 ```
 
