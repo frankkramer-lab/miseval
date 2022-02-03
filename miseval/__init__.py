@@ -104,7 +104,10 @@ metric_dict = {
     "AHD": calc_AverageHausdorffDistance,
     "AverageHausdorffDistance": calc_AverageHausdorffDistance,
     "MatthewsCorrelationCoefficient": calc_MCC,
-    "MCC": calc_MCC
+    "MCC": calc_MCC,
+    "NormalizedMatthewsCorrelationCoefficient": calc_MCC_Normalized,
+    "MCC_normalized": calc_MCC_Normalized,
+    "nMCC": calc_MCC_Normalized
 }
 
 #-----------------------------------------------------#

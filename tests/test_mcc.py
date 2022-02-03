@@ -56,3 +56,22 @@ class TEST_MCC(unittest.TestCase):
         self.assertTrue(callable(metric_dict["MCC"]))
         self.assertTrue("MatthewsCorrelationCoefficient" in metric_dict)
         self.assertTrue(callable(metric_dict["MatthewsCorrelationCoefficient"]))
+
+    #-------------------------------------------------#
+    #           Calculate : Normalized MCC            #
+    #-------------------------------------------------#
+    def test_calc_MCC_Normalized(self):
+        # Check binary score
+        score_bi = calc_MCC_Normalized(self.gt_bi, self.pd_bi, c=1)
+        self.assertTrue(isinstance(score_bi, np.float64))
+        # Check multi-class score
+        for i in range(5):
+            score_mc = calc_MCC_Normalized(self.gt_mc, self.pd_mc, c=i)
+            self.assertTrue(isinstance(score_mc, np.float64))
+        # Check existance in metric_dict
+        self.assertTrue("nMCC" in metric_dict)
+        self.assertTrue(callable(metric_dict["nMCC"]))
+        self.assertTrue("MCC_normalized" in metric_dict)
+        self.assertTrue(callable(metric_dict["MCC_normalized"]))
+        self.assertTrue("NormalizedMatthewsCorrelationCoefficient" in metric_dict)
+        self.assertTrue(callable(metric_dict["NormalizedMatthewsCorrelationCoefficient"]))
