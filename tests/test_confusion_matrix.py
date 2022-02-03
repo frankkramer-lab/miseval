@@ -46,17 +46,17 @@ class TEST_ConfusionMatrix(unittest.TestCase):
     def test_calc_ConfusionMatrix(self):
         # Check binary score
         scores_bi = calc_ConfusionMatrix(self.gt_bi, self.pd_bi, c=1)
-        self.assertTrue(isinstance(scores_bi[0], np.float64))
-        self.assertTrue(isinstance(scores_bi[1], np.float64))
-        self.assertTrue(isinstance(scores_bi[2], np.float64))
-        self.assertTrue(isinstance(scores_bi[3], np.float64))
+        self.assertTrue(isinstance(scores_bi[0], np.int64))
+        self.assertTrue(isinstance(scores_bi[1], np.int64))
+        self.assertTrue(isinstance(scores_bi[2], np.int64))
+        self.assertTrue(isinstance(scores_bi[3], np.int64))
         # Check multi-class score
         for i in range(5):
             scores_mc = calc_ConfusionMatrix(self.gt_mc, self.pd_mc, c=i)
-            self.assertTrue(isinstance(scores_mc[0], np.float64))
-            self.assertTrue(isinstance(scores_mc[1], np.float64))
-            self.assertTrue(isinstance(scores_mc[2], np.float64))
-            self.assertTrue(isinstance(scores_mc[3], np.float64))
+            self.assertTrue(isinstance(scores_mc[0], np.int64))
+            self.assertTrue(isinstance(scores_mc[1], np.int64))
+            self.assertTrue(isinstance(scores_mc[2], np.int64))
+            self.assertTrue(isinstance(scores_mc[3], np.int64))
 
     #-------------------------------------------------#
     #            Calculate : True Positive            #
