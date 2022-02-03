@@ -73,8 +73,6 @@ class TEST_MCC(unittest.TestCase):
         self.assertTrue(callable(metric_dict["nMCC"]))
         self.assertTrue("MCC_normalized" in metric_dict)
         self.assertTrue(callable(metric_dict["MCC_normalized"]))
-        self.assertTrue("NormalizedMatthewsCorrelationCoefficient" in metric_dict)
-        self.assertTrue(callable(metric_dict["NormalizedMatthewsCorrelationCoefficient"]))
 
     #-------------------------------------------------#
     #             Calculate : Absolute MCC            #
@@ -92,5 +90,3 @@ class TEST_MCC(unittest.TestCase):
         self.assertTrue(callable(metric_dict["aMCC"]))
         self.assertTrue("MCC_absolute" in metric_dict)
         self.assertTrue(callable(metric_dict["MCC_absolute"]))
-        self.assertTrue("AbsoluteMatthewsCorrelationCoefficient" in metric_dict)
-        self.assertTrue(callable(metric_dict["AbsoluteMatthewsCorrelationCoefficient"]))
