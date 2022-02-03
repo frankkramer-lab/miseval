@@ -38,6 +38,7 @@ The open-source and free to use Python package miseval was developed to establis
 | Hausdorff Distance | "HD", "HausdorffDistance" | miseval.calc_SimpleHausdorffDistance() |
 | Average Hausdorff Distance | "AHD", "AverageHausdorffDistance" | miseval.calc_AverageHausdorffDistance() |
 | Volumetric Similarity | "VS", "VolumetricSimilarity" | miseval.calc_VolumetricSimilarity() |
+| Matthews Correlation Coefficient | "MCC", "MatthewsCorrelationCoefficient" | miseval.calc_MCC() |
 | True Positive | "TP", "TruePositive" | miseval.calc_TruePositive() |
 | False Positive | "FP", "FalsePositive" | miseval.calc_FalsePositive() |
 | True Negative | "TN", "TrueNegative" | miseval.calc_TrueNegative() |

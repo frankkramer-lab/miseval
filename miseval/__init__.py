@@ -49,6 +49,8 @@ from miseval.hausdorff import calc_SimpleHausdorffDistance, \
                               calc_AverageHausdorffDistance
 # Volumetric Similarity
 from miseval.volumetric_similarity import *
+# Matthews Correlation Coefficient
+from miseval.mcc import *
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -100,7 +102,9 @@ metric_dict = {
     "HD": calc_SimpleHausdorffDistance,
     "HausdorffDistance": calc_SimpleHausdorffDistance,
     "AHD": calc_AverageHausdorffDistance,
-    "AverageHausdorffDistance": calc_AverageHausdorffDistance
+    "AverageHausdorffDistance": calc_AverageHausdorffDistance,
+    "MatthewsCorrelationCoefficient": calc_MCC,
+    "MCC": calc_MCC
 }
 
 #-----------------------------------------------------#
