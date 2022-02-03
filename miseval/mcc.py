@@ -84,27 +84,3 @@ def calc_MCC_Absolute(truth, pred, c=1):
     amcc = abs(mcc)
     # Return normalized mcc score
     return amcc
-
-#-----------------------------------------------------#
-#            Calculate : Approximated MCC             #
-#-----------------------------------------------------#
-"""
-References:
-    Chicco, D., Jurman, G. The advantages of the Matthews correlation coefficient
-    (MCC) over F1 score and accuracy in binary classification evaluation.
-    BMC Genomics 21, 6 (2020). https://doi.org/10.1186/s12864-019-6413-7
-"""
-def calc_MCC_Approximated(truth, pred, c=1):
-    # Obtain confusion mat
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-    #
-    # Compute mcc
-    top = a*eps - b*eps
-    bot_raw = (a+b) * (a+eps) * (b+eps) * (eps+eps)
-    bot = math.sqrt(bot_raw)
-    if bot != 0 : mcc = top / bot
-    else : mcc = 0.0
-    # Absolute it
-    amcc = abs(mcc)
-    # Return normalized mcc score
-    return amcc
