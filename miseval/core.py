@@ -46,6 +46,7 @@ Arguments:
     metric (String or Function):     Metric function. Either a function directly or encoded as String from miseval or a custom function.
     multi_class (Boolean):           Boolean parameter, if segmentation is a binary or multi-class problem. By default False -> Binary mode.
     n_classes (Integer):             Number of classes. By default 2 -> Binary
+    kwargs (arguments):              Additional arguments for passing down to metric functions.
 
 Output:
     score (Float) or scores (List of Float)
@@ -55,7 +56,7 @@ Output:
     If multi_class == False & n_classes == 2, only a single score (float) is returned.
     If multi_class == True, multiple scores as a list are returned (for each class one score).
 """
-def evaluate(truth, pred, metric, multi_class=False, n_classes=2):
+def evaluate(truth, pred, metric, multi_class=False, n_classes=2, **kwargs):
     # Initialize metric function
     if isinstance(metric, str):
         if metric in metric_dict : eval_metric = metric_dict[metric]
@@ -73,12 +74,12 @@ def evaluate(truth, pred, metric, multi_class=False, n_classes=2):
         raise ValueError("Segmentation mask (pred) contains more than 2 classes!")
     # Run binary mode       -> Compute score only for main class
     if not multi_class and n_classes == 2:
-        score = eval_metric(truth, pred, c=1)
+        score = eval_metric(truth, pred, c=1, **kwargs)
         return score
     # Run multi-class mode  -> Compute score for each class
     else:
         score_list = np.zeros((n_classes,))
         for c in range(n_classes):
-            score = eval_metric(truth, pred, c=c)
+            score = eval_metric(truth, pred, c=c, **kwargs)
             score_list[c] = score
         return score_list

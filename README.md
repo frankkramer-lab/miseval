@@ -100,6 +100,7 @@ Arguments:
     metric (String or Function):     Metric function. Either a function directly or encoded as String from miseval or a custom function.
     multi_class (Boolean):           Boolean parameter, if segmentation is a binary or multi-class problem. By default False -> Binary mode.
     n_classes (Integer):             Number of classes. By default 2 -> Binary
+    kwargs (arguments):              Additional arguments for passing down to metric functions.
 
 Output:
     score (Float) or scores (List of Float)
@@ -109,7 +110,7 @@ Output:
     If multi_class == False & n_classes == 2, only a single score (float) is returned.
     If multi_class == True, multiple scores as a list are returned (for each class one score).
 """
-def evaluate(truth, pred, metric, multi_class=False, n_classes=2)
+def evaluate(truth, pred, metric, multi_class=False, n_classes=2, **kwargs)
 ```
 
 ## Installation
