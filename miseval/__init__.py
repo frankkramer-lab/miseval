@@ -107,7 +107,10 @@ metric_dict = {
     "MCC": calc_MCC,
     "NormalizedMatthewsCorrelationCoefficient": calc_MCC_Normalized,
     "MCC_normalized": calc_MCC_Normalized,
-    "nMCC": calc_MCC_Normalized
+    "nMCC": calc_MCC_Normalized,
+    "AbsoluteMatthewsCorrelationCoefficient": calc_MCC_Absolute,
+    "MCC_absolute": calc_MCC_Absolute,
+    "aMCC": calc_MCC_Absolute
 }
 
 #-----------------------------------------------------#

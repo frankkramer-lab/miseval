@@ -75,3 +75,22 @@ class TEST_MCC(unittest.TestCase):
         self.assertTrue(callable(metric_dict["MCC_normalized"]))
         self.assertTrue("NormalizedMatthewsCorrelationCoefficient" in metric_dict)
         self.assertTrue(callable(metric_dict["NormalizedMatthewsCorrelationCoefficient"]))
+
+    #-------------------------------------------------#
+    #             Calculate : Absolute MCC            #
+    #-------------------------------------------------#
+    def test_calc_MCC_Absolute(self):
+        # Check binary score
+        score_bi = calc_MCC_Absolute(self.gt_bi, self.pd_bi, c=1)
+        self.assertTrue(isinstance(score_bi, np.float64))
+        # Check multi-class score
+        for i in range(5):
+            score_mc = calc_MCC_Absolute(self.gt_mc, self.pd_mc, c=i)
+            self.assertTrue(isinstance(score_mc, np.float64))
+        # Check existance in metric_dict
+        self.assertTrue("aMCC" in metric_dict)
+        self.assertTrue(callable(metric_dict["aMCC"]))
+        self.assertTrue("MCC_absolute" in metric_dict)
+        self.assertTrue(callable(metric_dict["MCC_absolute"]))
+        self.assertTrue("AbsoluteMatthewsCorrelationCoefficient" in metric_dict)
+        self.assertTrue(callable(metric_dict["AbsoluteMatthewsCorrelationCoefficient"]))
