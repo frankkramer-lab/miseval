@@ -36,7 +36,13 @@ References:
 def calc_MCC(truth, pred, c=1):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-    # Compute mcc
+    # Verify if we need an approximation to zero (prove in reference)
+    if (tp >= 1 and fp >= 1 and tn == 0 and fn == 0) or \
+       (tp == 0 and fp >= 1 and tn >= 1 and fn == 0) or \
+       (tp == 0 and fp == 0 and tn >= 1 and fn >= 1) or \
+       (tp >= 1 and fp == 0 and tn == 0 and fn >= 1):
+       return 0.0
+    # else compute mcc
     top = tp*tn - fp*fn
     bot_raw = (tp+fp) * (tp+fn) * (tn+fp) * (tn+fn)
     bot = math.sqrt(bot_raw)
@@ -55,14 +61,8 @@ References:
     BMC Genomics 21, 6 (2020). https://doi.org/10.1186/s12864-019-6413-7
 """
 def calc_MCC_Normalized(truth, pred, c=1):
-    # Obtain confusion mat
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Compute mcc
-    top = tp*tn - fp*fn
-    bot_raw = (tp+fp) * (tp+fn) * (tn+fp) * (tn+fn)
-    bot = math.sqrt(bot_raw)
-    if bot != 0 : mcc = top / bot
-    else : mcc = 0.0
+    mcc = calc_MCC(truth, pred, c)
     # Normalize it
     nmcc = (mcc + 1) / 2
     # Return normalized mcc score
@@ -78,11 +78,29 @@ References:
     BMC Genomics 21, 6 (2020). https://doi.org/10.1186/s12864-019-6413-7
 """
 def calc_MCC_Absolute(truth, pred, c=1):
+    # Compute mcc
+    mcc = calc_MCC(truth, pred, c)
+    # Absolute it
+    amcc = abs(mcc)
+    # Return normalized mcc score
+    return amcc
+
+#-----------------------------------------------------#
+#            Calculate : Approximated MCC             #
+#-----------------------------------------------------#
+"""
+References:
+    Chicco, D., Jurman, G. The advantages of the Matthews correlation coefficient
+    (MCC) over F1 score and accuracy in binary classification evaluation.
+    BMC Genomics 21, 6 (2020). https://doi.org/10.1186/s12864-019-6413-7
+"""
+def calc_MCC_Approximated(truth, pred, c=1):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
+    #
     # Compute mcc
-    top = tp*tn - fp*fn
-    bot_raw = (tp+fp) * (tp+fn) * (tn+fp) * (tn+fn)
+    top = a*eps - b*eps
+    bot_raw = (a+b) * (a+eps) * (b+eps) * (eps+eps)
     bot = math.sqrt(bot_raw)
     if bot != 0 : mcc = top / bot
     else : mcc = 0.0
@@ -90,5 +108,3 @@ def calc_MCC_Absolute(truth, pred, c=1):
     amcc = abs(mcc)
     # Return normalized mcc score
     return amcc
-
-# MCC approximated
