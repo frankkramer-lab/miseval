@@ -24,7 +24,7 @@ import numpy as np
 #-----------------------------------------------------#
 #            Calculate : Confusion Matrix             #
 #-----------------------------------------------------#
-def calc_ConfusionMatrix(truth, pred, c=1):
+def calc_ConfusionMatrix(truth, pred, c=1, type=np.float64):
     # Obtain predicted and actual condition
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -35,6 +35,11 @@ def calc_ConfusionMatrix(truth, pred, c=1):
     tn = np.logical_and(not_pd, not_gt).sum()
     fp = np.logical_and(pd, not_gt).sum()
     fn = np.logical_and(not_pd, gt).sum()
+    # Convert to desired numpy type to avoid overflow
+    tp = tp.astype(type)
+    tn = tn.astype(type)
+    fp = fp.astype(type)
+    fn = fn.astype(type)
     # Return Confusion Matrix
     return tp, tn, fp, fn
 
