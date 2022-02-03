@@ -34,9 +34,9 @@ References:
     20(1):37–46. Available from:
     http://journals.sagepub.com/doi/10.1177/001316446002000104
 """
-def calc_Kappa(truth, pred, c=1):
+def calc_Kappa(truth, pred, c=1, dtype=np.float64):
     # Obtain confusion mat
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
+    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c, dtype)
     # Compute kappa
     fa = tp + tn
     fc = ((tn+fn)*(tn+fp) + (fp+tp)*(fn+tp)) / (tp+tn+fp+fn)

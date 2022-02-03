@@ -20,6 +20,7 @@
 #                   Library imports                   #
 #-----------------------------------------------------#
 # External modules
+import numpy as np
 import math
 # Internal modules
 from miseval.confusion_matrix import calc_ConfusionMatrix
@@ -33,9 +34,9 @@ References:
     (MCC) over F1 score and accuracy in binary classification evaluation.
     BMC Genomics 21, 6 (2020). https://doi.org/10.1186/s12864-019-6413-7
 """
-def calc_MCC(truth, pred, c=1):
+def calc_MCC(truth, pred, c=1, dtype=np.float64):
     # Obtain confusion mat
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
+    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c, dtype)
     # Verify if we need an approximation to zero (prove in reference)
     if (tp >= 1 and fp >= 1 and tn == 0 and fn == 0) or \
        (tp == 0 and fp >= 1 and tn >= 1 and fn == 0) or \
