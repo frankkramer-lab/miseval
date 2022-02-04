@@ -51,6 +51,8 @@ from miseval.hausdorff import calc_SimpleHausdorffDistance, \
 from miseval.volumetric_similarity import *
 # Matthews Correlation Coefficient
 from miseval.mcc import *
+# MISmetric
+from miseval.mism import *
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -95,6 +97,8 @@ metric_dict = {
     "Specificity": calc_Specificity,
     "TNR": calc_Specificity,
     "TrueNegativeRate": calc_Specificity,
+    "wSPEC": calc_Specificity_Weighted,
+    "WeightedSpecificity": calc_Specificity_Weighted,
     "PREC": calc_Precision,
     "Precision": calc_Precision,
     "VS": calc_VolumetricSimilarity,
@@ -108,7 +112,9 @@ metric_dict = {
     "MCC_normalized": calc_MCC_Normalized,
     "nMCC": calc_MCC_Normalized,
     "MCC_absolute": calc_MCC_Absolute,
-    "aMCC": calc_MCC_Absolute
+    "aMCC": calc_MCC_Absolute,
+    # "MISm": calc_MISm,
+    # "MISmetric": calc_MISm
 }
 
 #-----------------------------------------------------#
