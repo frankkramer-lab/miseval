@@ -113,8 +113,8 @@ metric_dict = {
     "nMCC": calc_MCC_Normalized,
     "MCC_absolute": calc_MCC_Absolute,
     "aMCC": calc_MCC_Absolute,
-    # "MISm": calc_MISm,
-    # "MISmetric": calc_MISm
+    "MISm": calc_MISm,
+    "MISmetric": calc_MISm
 }
 
 #-----------------------------------------------------#
