@@ -20,44 +20,29 @@
 #                   Library imports                   #
 #-----------------------------------------------------#
 # External modules
-import numpy as np
+import math
 # Internal modules
 from miseval.confusion_matrix import calc_ConfusionMatrix
+from miseval import calc_DSC_Sets, calc_Specificity_Weighted
 
 #-----------------------------------------------------#
-#           Calculate : Specificity via Sets          #
+#                Calculate : MISmetric                #
 #-----------------------------------------------------#
-def calc_Specificity_Sets(truth, pred, c=1):
-    # Obtain sets with associated class
-    not_gt = np.logical_not(np.equal(truth, c))
-    not_pd = np.logical_not(np.equal(pred, c))
-    # Calculate specificity
-    if (not_gt).sum() != 0:
-        spec = np.logical_and(not_pd, not_gt).sum() / (not_gt).sum()
-    else : spec = 0.0
-    # Return specificity
-    return spec
+"""
+Combination of weighted Specificity for p=0 and Dice Similarity Coefficient
+as Backbone for p>0.
 
-#-----------------------------------------------------#
-#            Calculate : Specificity via CM           #
-#-----------------------------------------------------#
-def calc_Specificity_CM(truth, pred, c=1):
-    # Obtain confusion matrix
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-    # Calculate specificity
-    if (tn + fp) != 0 : spec = (tn) / (tn + fp)
-    else : spec = 0.0
-    # Return specificity
-    return spec
+Recommended for weak-labeled datasets.
 
-#-----------------------------------------------------#
-#           Calculate : Weighted Specificity          #
-#-----------------------------------------------------#
-def calc_Specificity_Weighted(truth, pred, c=1, alpha=0.1):
+References:
+    Coming soon.
+"""
+def calc_MISm(truth, pred, c=1, alpha=0.1):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-    # Compute weighted specificity
-    if (fp+tn) != 0 : wspec = (alpha*tn) / ((1-alpha)*fp + alpha*tn)
-    else : wspec = 0.0
-    # Return weighted specificity
-    return wspec
+    # Identify metric wing
+    p = tp + fn
+    # Compute & return normal dice if p > 0
+    if p > 0: return calc_DSC_Sets(truth, pred, c)
+    # Compute & return weighted specificity if p = 0
+    else : return calc_Specificity_Weighted(truth, pred, c, alpha)

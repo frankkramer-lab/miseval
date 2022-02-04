@@ -74,3 +74,23 @@ class TEST_Specificity(unittest.TestCase):
             score_mc = calc_Specificity_CM(self.gt_mc, self.pd_mc, c=i)
             self.assertTrue(isinstance(score_mc, np.float64))
             self.assertTrue(score_mc == calc_Specificity(self.gt_mc, self.pd_mc, c=i))
+
+    #-------------------------------------------------#
+    #         Calculate : Weighted Specificity        #
+    #-------------------------------------------------#
+    def test_calc_Specificity_Weighted(self):
+        # Check binary score
+        score_bi = calc_Specificity_Weighted(self.gt_bi, self.pd_bi, c=1)
+        self.assertTrue(isinstance(score_bi, np.float64))
+        self.assertTrue(score_bi == calc_Specificity_Weighted(self.gt_bi,
+                                                              self.pd_bi, c=1))
+        # Check multi-class score
+        for i in range(5):
+            score_mc = calc_Specificity_Weighted(self.gt_mc, self.pd_mc, c=i)
+            self.assertTrue(isinstance(score_mc, np.float64))
+            self.assertTrue(score_mc == calc_Specificity_Weighted(self.gt_mc,
+                                                                  self.pd_mc, c=i))
+        self.assertTrue("wSPEC" in metric_dict)
+        self.assertTrue(callable(metric_dict["wSPEC"]))
+        self.assertTrue("WeightedSpecificity" in metric_dict)
+        self.assertTrue(callable(metric_dict["WeightedSpecificity"]))

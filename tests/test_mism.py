@@ -21,43 +21,38 @@
 #-----------------------------------------------------#
 # External modules
 import numpy as np
+import unittest
 # Internal modules
-from miseval.confusion_matrix import calc_ConfusionMatrix
+from miseval import *
 
 #-----------------------------------------------------#
-#           Calculate : Specificity via Sets          #
+#                 Unittest: MISmetric                 #
 #-----------------------------------------------------#
-def calc_Specificity_Sets(truth, pred, c=1):
-    # Obtain sets with associated class
-    not_gt = np.logical_not(np.equal(truth, c))
-    not_pd = np.logical_not(np.equal(pred, c))
-    # Calculate specificity
-    if (not_gt).sum() != 0:
-        spec = np.logical_and(not_pd, not_gt).sum() / (not_gt).sum()
-    else : spec = 0.0
-    # Return specificity
-    return spec
+class TEST_MISm(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        # Create ground truth
+        np.random.seed(1)
+        self.gt_bi = np.random.randint(2, size=(32,32))
+        self.gt_mc = np.random.randint(5, size=(32,32))
+        # Create prediction
+        np.random.seed(2)
+        self.pd_bi = np.random.randint(2, size=(32,32))
+        self.pd_mc = np.random.randint(5, size=(32,32))
 
-#-----------------------------------------------------#
-#            Calculate : Specificity via CM           #
-#-----------------------------------------------------#
-def calc_Specificity_CM(truth, pred, c=1):
-    # Obtain confusion matrix
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-    # Calculate specificity
-    if (tn + fp) != 0 : spec = (tn) / (tn + fp)
-    else : spec = 0.0
-    # Return specificity
-    return spec
-
-#-----------------------------------------------------#
-#           Calculate : Weighted Specificity          #
-#-----------------------------------------------------#
-def calc_Specificity_Weighted(truth, pred, c=1, alpha=0.1):
-    # Obtain confusion mat
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-    # Compute weighted specificity
-    if (fp+tn) != 0 : wspec = (alpha*tn) / ((1-alpha)*fp + alpha*tn)
-    else : wspec = 0.0
-    # Return weighted specificity
-    return wspec
+    #-------------------------------------------------#
+    #              Calculate : MISmetric              #
+    #-------------------------------------------------#
+    def test_calc_MISm(self):
+        # Check binary score
+        score_bi = calc_MISm(self.gt_bi, self.pd_bi, c=1)
+        self.assertTrue(isinstance(score_bi, np.float64))
+        # Check multi-class score
+        for i in range(5):
+            score_mc = calc_MISm(self.gt_mc, self.pd_mc, c=i)
+            self.assertTrue(isinstance(score_mc, np.float64))
+        # Check existance in metric_dict
+        self.assertTrue("MISm" in metric_dict)
+        self.assertTrue(callable(metric_dict["MISm"]))
+        self.assertTrue("MISmetric" in metric_dict)
+        self.assertTrue(callable(metric_dict["MISmetric"]))
