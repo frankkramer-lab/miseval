@@ -50,7 +50,6 @@ def calc_Specificity_CM(truth, pred, c=1):
     # Return specificity
     return spec
 
-
 #-----------------------------------------------------#
 #           Calculate : Weighted Specificity          #
 #-----------------------------------------------------#
