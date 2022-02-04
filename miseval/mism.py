@@ -37,7 +37,7 @@ Recommended for weak-labeled datasets.
 References:
     Coming soon.
 """
-def calc_MISm(truth, pred, c=1, alpha=5):
+def calc_MISm(truth, pred, c=1, alpha=0.1):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Identify metric wing
