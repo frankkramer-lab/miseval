@@ -17,7 +17,7 @@ setup(
    long_description_content_type="text/markdown",
    packages=find_packages(),
    python_requires='>=3.8',
-   install_requires=['numpy>=1.21.5',
+   install_requires=['numpy<1.22,>=1.18',
                      'scikit-learn>=1.0.2',
                      'scikit-image>=0.19.1'
                      'scipy>=1.7.3',
