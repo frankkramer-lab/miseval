@@ -23,7 +23,7 @@ setup(
                      'scipy>=1.7.3',
                      'hausdorff>=0.2.6',
                      'numba>=0.54.0',
-                     'distances>=1.0.0'],
+                     'dictances>=1.5.3'],
    classifiers=["Programming Language :: Python :: 3",
                 "Programming Language :: Python :: 3.8",
                 "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
