@@ -25,7 +25,7 @@ from skimage.measure import find_contours
 import dictances
 
 #-----------------------------------------------------#
-#            Calculate : AUC via trapezoid            #
+#            Calculate : Boundary Distance            #
 #-----------------------------------------------------#
 """
 Computes distance of segmentation boundaries between ground truth and prediction.
