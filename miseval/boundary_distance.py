@@ -64,12 +64,13 @@ def calc_Boundary_Distance(truth, pred, c=1, distance="euclidean",
     # Obtain sets with associated class
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
-    # Compute boundary map for gt & pd
-    gt_bm = np.concatenate(find_contours(gt))
-    pd_bm = np.concatenate(find_contours(pd))
-    # Compute distance between each coord
+    # Initialize result list
     res_dist = []
     try:
+        # Compute boundary map for gt & pd
+        gt_bm = np.concatenate(find_contours(gt))
+        pd_bm = np.concatenate(find_contours(pd))
+        # Compute distance between each coord
         for i in range(gt_bm.shape[0]):
             for j in range(pd_bm.shape[0]):
                 # Create dictionary as interface for dictances package
