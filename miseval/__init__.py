@@ -51,6 +51,8 @@ from miseval.hausdorff import calc_SimpleHausdorffDistance, \
 from miseval.volumetric_similarity import *
 # Matthews Correlation Coefficient
 from miseval.mcc import *
+# Boundary Distances
+from miseval.boundary_distance import *
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -108,7 +110,9 @@ metric_dict = {
     "MCC_normalized": calc_MCC_Normalized,
     "nMCC": calc_MCC_Normalized,
     "MCC_absolute": calc_MCC_Absolute,
-    "aMCC": calc_MCC_Absolute
+    "aMCC": calc_MCC_Absolute,
+    "BoundaryDistance": calc_Boundary_Distance,
+    "BD": calc_Boundary_Distance
 }
 
 #-----------------------------------------------------#
