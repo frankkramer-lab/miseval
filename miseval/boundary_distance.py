@@ -32,7 +32,7 @@ Computes distance of segmentation boundaries between ground truth and prediction
 
 List of available distances:
     Bhattacharyya distance 	            bhattacharyya
-    Bhattacharyya coefficient 	        bhattacharyya_coefficient
+    Bhattacharyya coefficient           bhattacharyya_coefficient
     Canberra distance 	                canberra
     Chebyshev distance 	                chebyshev
     Chi Square distance 	            chi_square

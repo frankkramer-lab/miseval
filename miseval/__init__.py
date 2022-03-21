@@ -53,6 +53,8 @@ from miseval.volumetric_similarity import *
 from miseval.mcc import *
 # Boundary Distances
 from miseval.boundary_distance import *
+# Hinge loss
+from miseval.hinge import *
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -112,7 +114,10 @@ metric_dict = {
     "MCC_absolute": calc_MCC_Absolute,
     "aMCC": calc_MCC_Absolute,
     "BoundaryDistance": calc_Boundary_Distance,
-    "BD": calc_Boundary_Distance
+    "Distance": calc_Boundary_Distance,
+    "BD": calc_Boundary_Distance,
+    "Hinge": calc_Hinge,
+    "HingeLoss": calc_Hinge,
 }
 
 #-----------------------------------------------------#
