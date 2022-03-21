@@ -42,6 +42,7 @@ The open-source and free to use Python package miseval was developed to establis
 | Normalized Matthews Correlation Coefficient | "nMCC", "MCC_normalized" | miseval.calc_MCC_Normalized() |
 | Absolute Matthews Correlation Coefficient | "aMCC", "MCC_absolute" | miseval.calc_MCC_Absolute() |
 | Boundary Distance | "BD", "Distance", " BoundaryDistance" | miseval.calc_Boundary_Distance() |
+| Hinge Loss | "Hinge", "HingeLoss" | miseval.calc_Hinge() |
 | True Positive | "TP", "TruePositive" | miseval.calc_TruePositive() |
 | False Positive | "FP", "FalsePositive" | miseval.calc_FalsePositive() |
 | True Negative | "TN", "TrueNegative" | miseval.calc_TrueNegative() |
@@ -52,16 +53,16 @@ The open-source and free to use Python package miseval was developed to establis
 ```
 List of available distances:
     Bhattacharyya distance 	            bhattacharyya
-    Bhattacharyya coefficient 	         bhattacharyya_coefficient
-    Canberra distance 	                 canberra
+    Bhattacharyya coefficient 	        bhattacharyya_coefficient
+    Canberra distance 	                canberra
     Chebyshev distance 	                chebyshev
-    Chi Square distance                    chi_square
-    Cosine Distance                        cosine
+    Chi Square distance                 chi_square
+    Cosine Distance                     cosine
     Euclidean distance 	                euclidean
     Hamming distance 	                  hamming
-    Jensen-Shannon divergence 	         jensen_shannon
-    Kullback-Leibler divergence            kullback_leibler
-    Mean absolute error 	               mae
+    Jensen-Shannon divergence 	        jensen_shannon
+    Kullback-Leibler divergence         kullback_leibler
+    Mean absolute error 	              mae
     Taxicab geometry 	                  manhattan, cityblock, total_variation
     Minkowski distance 	                minkowsky
     Mean squared error 	                mse
