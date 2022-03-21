@@ -36,7 +36,7 @@ from miseval.confusion_matrix import calc_ConfusionMatrix
     if two empty masks are compared.
     This allow rewarding models which correctly predict empty masks.
 """
-def calc_DSC_Enhanced(truth, pred, c=1):
+def calc_DSC_Enhanced(truth, pred, c=1, **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -51,7 +51,7 @@ def calc_DSC_Enhanced(truth, pred, c=1):
 #-----------------------------------------------------#
 #              Calculate : DSC via Sets               #
 #-----------------------------------------------------#
-def calc_DSC_Sets(truth, pred, c=1):
+def calc_DSC_Sets(truth, pred, c=1, **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -65,7 +65,7 @@ def calc_DSC_Sets(truth, pred, c=1):
 #-----------------------------------------------------#
 #             Calculate : DSC via ConfMat             #
 #-----------------------------------------------------#
-def calc_DSC_CM(truth, pred, c=1):
+def calc_DSC_CM(truth, pred, c=1, **kwargs):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Calculate Dice

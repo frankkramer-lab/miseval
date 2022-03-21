@@ -26,9 +26,9 @@ import unittest
 from miseval import *
 
 #-----------------------------------------------------#
-#            Unittest: Area under the ROC             #
+#                 Unittest: Hinge loss                #
 #-----------------------------------------------------#
-class TEST_AUC(unittest.TestCase):
+class TEST_Hinge(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         # Create ground truth
@@ -48,11 +48,13 @@ class TEST_AUC(unittest.TestCase):
     #-------------------------------------------------#
     def test_calc_Hinge(self):
         # Check binary score
-        score_bi = calc_Hinge(self.gt_bi, self.prob_bi, c=1)
+        score_bi = calc_Hinge(self.gt_bi, self.prob_bi, c=1,
+                              provided_prob=True)
         self.assertTrue(isinstance(score_bi, np.float64))
         # Check multi-class score
         for i in range(5):
-            score_mc = calc_Hinge(self.gt_mc, self.prob_mc, c=i)
+            score_mc = calc_Hinge(self.gt_mc, self.prob_mc, c=i,
+                                  provided_prob=True)
             self.assertTrue(isinstance(score_mc, np.float64))
         # Check existance in metric_dict
         self.assertTrue("Hinge" in metric_dict)

@@ -36,7 +36,7 @@ References:
     Powers DMW. Evaluation: from precision, recall and F-measure to ROC, informedness, markedness and correlation.
     2020 Oct 10 [cited 2022 Jan 8]; Available from: http://arxiv.org/abs/2010.16061
 """
-def calc_AUC_trapezoid(truth, pred, c=1):
+def calc_AUC_trapezoid(truth, pred, c=1, **kwargs):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Compute AUC
@@ -51,7 +51,7 @@ def calc_AUC_trapezoid(truth, pred, c=1):
 #-----------------------------------------------------#
 #           Calculate : AUC via probability           #
 #-----------------------------------------------------#
-def calc_AUC_probability(truth, pred_prob, c=1, rounding_precision=5):
+def calc_AUC_probability(truth, pred_prob, c=1, rounding_precision=5, **kwargs):
     # Round probability to reduce unnecessary thresholds
     prob = np.round(pred_prob[:,:,c], rounding_precision)
     # Obtain ground truth set with associated class

@@ -36,7 +36,7 @@ References:
     Metrics for evaluating 3D medical image segmentation: analysis, selection, and tool.
     BMC Med Imaging 15, 29 (2015). https://doi.org/10.1186/s12880-015-0068-x
 """
-def calc_VolumetricSimilarity(truth, pred, c=1):
+def calc_VolumetricSimilarity(truth, pred, c=1, **kwargs):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Compute VS

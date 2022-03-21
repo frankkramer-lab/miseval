@@ -67,7 +67,8 @@ class TEST_CoreEvaluate(unittest.TestCase):
     def test_evaluate_binary_bi(self):
         for metric in metric_dict:
             score = evaluate(self.gt_bi, self.pd_bi, metric,
-                             multi_class=False, n_classes=2)
+                             multi_class=False, n_classes=2,
+                             provided_prob=False)
             self.assertTrue(isinstance(score, np.int64) or \
                             isinstance(score, np.float64))
 
@@ -77,7 +78,8 @@ class TEST_CoreEvaluate(unittest.TestCase):
     def test_evaluate_binary_mc(self):
         for metric in metric_dict:
             scores = evaluate(self.gt_mc, self.pd_mc, metric,
-                              multi_class=False, n_classes=5)
+                              multi_class=False, n_classes=5,
+                              provided_prob=False)
             self.assertTrue(len(scores) == 5)
             self.assertTrue(isinstance(scores, np.ndarray))
 
@@ -87,7 +89,8 @@ class TEST_CoreEvaluate(unittest.TestCase):
     def test_evaluate_multiclass_bi(self):
         for metric in metric_dict:
             scores = evaluate(self.gt_bi, self.pd_bi, metric,
-                              multi_class=True, n_classes=2)
+                              multi_class=True, n_classes=2,
+                              provided_prob=False)
             self.assertTrue(len(scores) == 2)
             self.assertTrue(isinstance(scores, np.ndarray))
 
@@ -97,7 +100,8 @@ class TEST_CoreEvaluate(unittest.TestCase):
     def test_evaluate_multiclass_mc(self):
         for metric in metric_dict:
             scores = evaluate(self.gt_mc, self.pd_mc, metric,
-                              multi_class=True, n_classes=5)
+                              multi_class=True, n_classes=5,
+                              provided_prob=False)
             self.assertTrue(len(scores) == 5)
             self.assertTrue(isinstance(scores, np.ndarray))
 
@@ -108,7 +112,8 @@ class TEST_CoreEvaluate(unittest.TestCase):
         # Check for incorrect number of classes in ground truth
         with self.assertRaises(ValueError):
             scores = evaluate(self.gt_mc, self.pd_bi, "TruePositive",
-                              multi_class=True, n_classes=2)
+                              multi_class=True, n_classes=2,
+                              provided_prob=False)
         # Check for incorrect number of classes in prediction
         with self.assertRaises(ValueError):
             scores = evaluate(self.gt_bi, self.pd_mc, "TruePositive",

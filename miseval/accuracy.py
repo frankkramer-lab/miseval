@@ -29,7 +29,7 @@ from miseval.confusion_matrix import calc_ConfusionMatrix
 #-----------------------------------------------------#
 #            Calculate : Accuracy via Sets            #
 #-----------------------------------------------------#
-def calc_Accuracy_Sets(truth, pred, c=1):
+def calc_Accuracy_Sets(truth, pred, c=1, **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -44,7 +44,7 @@ def calc_Accuracy_Sets(truth, pred, c=1):
 #-----------------------------------------------------#
 #           Calculate : Accuracy via ConfMat          #
 #-----------------------------------------------------#
-def calc_Accuracy_CM(truth, pred, c=1):
+def calc_Accuracy_CM(truth, pred, c=1, **kwargs):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Calculate Accuracy
@@ -68,7 +68,7 @@ References:
     Fundamentals of Machine Learning for Predictive Data Analytics: Algorithms, Worked Examples, and Case Studies.
     https://mitpress.mit.edu/books/fundamentals-machine-learning-predictive-data-analytics
 """
-def calc_BalancedAccuracy(truth, pred, c=1):
+def calc_BalancedAccuracy(truth, pred, c=1, **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c).flatten()
     pd = np.equal(pred, c).flatten()
@@ -96,7 +96,7 @@ References:
 
 [3] https://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index
 """
-def calc_AdjustedRandIndex(truth, pred, c=1):
+def calc_AdjustedRandIndex(truth, pred, c=1, **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c).flatten()
     pd = np.equal(pred, c).flatten()

@@ -27,7 +27,7 @@ from miseval.confusion_matrix import calc_ConfusionMatrix
 #-----------------------------------------------------#
 #              Calculate : IoU via Sets               #
 #-----------------------------------------------------#
-def calc_IoU_Sets(truth, pred, c=1):
+def calc_IoU_Sets(truth, pred, c=1, **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -42,7 +42,7 @@ def calc_IoU_Sets(truth, pred, c=1):
 #-----------------------------------------------------#
 #             Calculate : IoU via ConfMat             #
 #-----------------------------------------------------#
-def calc_IoU_CM(truth, pred, c=1):
+def calc_IoU_CM(truth, pred, c=1, **kwargs):
     # Obtain confusion mat
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Calculate IoU

@@ -24,7 +24,7 @@ import numpy as np
 #-----------------------------------------------------#
 #            Calculate : Confusion Matrix             #
 #-----------------------------------------------------#
-def calc_ConfusionMatrix(truth, pred, c=1, dtype=np.int64):
+def calc_ConfusionMatrix(truth, pred, c=1, dtype=np.int64, **kwargs):
     # Obtain predicted and actual condition
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -46,7 +46,7 @@ def calc_ConfusionMatrix(truth, pred, c=1, dtype=np.int64):
 #-----------------------------------------------------#
 #              Calculate : True Positive              #
 #-----------------------------------------------------#
-def calc_TruePositive(truth, pred, c=1):
+def calc_TruePositive(truth, pred, c=1, **kwargs):
     # Obtain predicted and actual condition
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -60,7 +60,7 @@ def calc_TruePositive(truth, pred, c=1):
 #-----------------------------------------------------#
 #              Calculate : True Negative              #
 #-----------------------------------------------------#
-def calc_TrueNegative(truth, pred, c=1):
+def calc_TrueNegative(truth, pred, c=1, **kwargs):
     # Obtain predicted and actual condition
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -74,7 +74,7 @@ def calc_TrueNegative(truth, pred, c=1):
 #-----------------------------------------------------#
 #              Calculate : False Positive             #
 #-----------------------------------------------------#
-def calc_FalsePositive(truth, pred, c=1):
+def calc_FalsePositive(truth, pred, c=1, **kwargs):
     # Obtain predicted and actual condition
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -88,7 +88,7 @@ def calc_FalsePositive(truth, pred, c=1):
 #-----------------------------------------------------#
 #              Calculate : False Negative             #
 #-----------------------------------------------------#
-def calc_FalseNegative(truth, pred, c=1):
+def calc_FalseNegative(truth, pred, c=1, **kwargs):
     # Obtain predicted and actual condition
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)

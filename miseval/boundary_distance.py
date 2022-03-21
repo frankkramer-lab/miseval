@@ -60,7 +60,7 @@ Distance Implementation:
 
 """
 def calc_Boundary_Distance(truth, pred, c=1, distance="euclidean",
-                           pooling="mean"):
+                           pooling="mean", **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -83,7 +83,7 @@ def calc_Boundary_Distance(truth, pred, c=1, distance="euclidean",
                 # Append to result list
                 res_dist.append(dist)
     except Exception as e:
-        print("Unexpected error for distance:", distance, e)
+        print("Distance", distance, "does NOT support all edge cases:", e)
     # Apply pooling function
     res = getattr(np, pooling)(res_dist)
     # Return AUC

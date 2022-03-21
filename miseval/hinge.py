@@ -23,7 +23,7 @@
 import numpy as np
 
 #-----------------------------------------------------#
-#            Calculate : asd            #
+#                Calculate : Hinge loss               #
 #-----------------------------------------------------#
 """ Compute Hinge loss between truth and prediction probabilities.
 
@@ -35,17 +35,18 @@ Pooling (how to combine computed Hinge losses to a single value):
     Distance Averaging                  mean
     Minimum Distance                    amin
     Maximum Distance                    amax
-
 """
-def calc_Hinge(truth, pred_prob, c=1, pooling="mean"):
+def calc_Hinge(truth, pred_prob, c=1, pooling="mean", provided_prob=True,
+               **kwargs):
     # Obtain binary classification
-    prob = pred_prob[:,:,c]
+    if provided_prob : prob = np.take(pred_prob, c, axis=-1)
+    else : prob = np.equal(pred_prob, c)
     gt = np.equal(truth, c).astype(int)
     # Convert ground truth 0/1 format to -1/+1 format
     gt = np.where(gt==0, -1, gt)
     # Compute Hinge
     hinge_total = np.maximum(1 - gt * prob, 0)
     # Apply pooling function across all pixel classifications
-    res = getattr(np, pooling)(res_dist)
+    hinge = getattr(np, pooling)(hinge_total)
     # Return Hinge
     return hinge

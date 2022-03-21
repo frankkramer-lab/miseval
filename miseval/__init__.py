@@ -55,6 +55,8 @@ from miseval.mcc import *
 from miseval.boundary_distance import *
 # Hinge loss
 from miseval.hinge import *
+# Entropy-based metrics
+from miseval.entropy import *
 
 #-----------------------------------------------------#
 #         Access Functions to Metric Functions        #
@@ -118,6 +120,8 @@ metric_dict = {
     "BD": calc_Boundary_Distance,
     "Hinge": calc_Hinge,
     "HingeLoss": calc_Hinge,
+    "CE": calc_CrossEntropy,
+    "CrossEntropy": calc_CrossEntropy,
 }
 
 #-----------------------------------------------------#
