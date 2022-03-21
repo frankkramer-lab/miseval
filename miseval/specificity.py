@@ -27,7 +27,7 @@ from miseval.confusion_matrix import calc_ConfusionMatrix
 #-----------------------------------------------------#
 #           Calculate : Specificity via Sets          #
 #-----------------------------------------------------#
-def calc_Specificity_Sets(truth, pred, c=1):
+def calc_Specificity_Sets(truth, pred, c=1, **kwargs):
     # Obtain sets with associated class
     not_gt = np.logical_not(np.equal(truth, c))
     not_pd = np.logical_not(np.equal(pred, c))
@@ -41,7 +41,7 @@ def calc_Specificity_Sets(truth, pred, c=1):
 #-----------------------------------------------------#
 #            Calculate : Specificity via CM           #
 #-----------------------------------------------------#
-def calc_Specificity_CM(truth, pred, c=1):
+def calc_Specificity_CM(truth, pred, c=1, **kwargs):
     # Obtain confusion matrix
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Calculate specificity

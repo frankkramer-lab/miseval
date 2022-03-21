@@ -21,27 +21,36 @@
 #-----------------------------------------------------#
 # External modules
 import numpy as np
-# Internal modules
-from miseval.confusion_matrix import calc_ConfusionMatrix
 
 #-----------------------------------------------------#
-#          Calculate : Volumetric Similarity          #
+#              Calculate : Cross-Entropy              #
 #-----------------------------------------------------#
-"""
-Formula:
-    VS = 1 - (|FN-FP| / (2TP + FP + FN))
+""" Compute cross-entropy between truth and prediction probabilities.
 
-References:
-    Taha, A.A., Hanbury, A.
-    Metrics for evaluating 3D medical image segmentation: analysis, selection, and tool.
-    BMC Med Imaging 15, 29 (2015). https://doi.org/10.1186/s12880-015-0068-x
+    In information theory, the cross-entropy between two probability distributions p and q
+    over the same underlying set of events measures the average number of bits needed to
+    identify an event drawn from the set if a coding scheme used for the set is optimized
+    for an estimated probability distribution q, rather than the true distribution p.
+
+    Source: https://en.wikipedia.org/wiki/Cross_entropy
+
+Pooling (how to combine computed cross-entropy to a single value):
+    Distance Sum                        sum
+    Distance Averaging                  mean
+    Minimum Distance                    amin
+    Maximum Distance                    amax
 """
-def calc_VolumetricSimilarity(truth, pred, c=1, **kwargs):
-    # Obtain confusion mat
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-    # Compute VS
-    if (2*tp + fp + fn) != 0:
-        vs = 1 - (np.abs(fn-fp) / (2*tp + fp + fn))
-    else : vs = 1.0 - 0.0
-    # Return VS score
-    return vs
+def calc_CrossEntropy(truth, pred_prob, c=1, pooling="mean", provided_prob=True,
+                      **kwargs):
+    # Obtain binary classification
+    if provided_prob : prob = np.take(pred_prob, c, axis=-1)
+    else : prob = np.equal(pred_prob, c)
+    gt = np.equal(truth, c).astype(int)
+    # Add epsilon to probability to avoid zero divisions for log()
+    prob = prob + np.finfo(np.float32).eps
+    # Compute cross-entropy
+    cross_entropy = - gt * np.log(prob)
+    # Apply pooling function across all pixel classifications
+    res = getattr(np, pooling)(cross_entropy)
+    # Return Cross-Entropy
+    return res

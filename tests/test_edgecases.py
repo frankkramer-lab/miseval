@@ -53,7 +53,8 @@ class TEST_EdgeCases(unittest.TestCase):
     def test_EdgeCase_identical(self):
         for metric in metric_dict:
             scores = evaluate(self.gt_identical, self.pd_identical, metric,
-                             multi_class=True, n_classes=2)
+                             multi_class=True, n_classes=2,
+                             provided_prob=False)
             self.assertTrue(isinstance(scores[0], np.int64) or \
                             isinstance(scores[0], np.float64))
             self.assertTrue(isinstance(scores[1], np.int64) or \
@@ -67,7 +68,8 @@ class TEST_EdgeCases(unittest.TestCase):
             gt = self.gt_normal
             for pd in [self.pd_normal, self.pd_empty, self.pd_full]:
                 scores = evaluate(gt, pd, metric,
-                                  multi_class=True, n_classes=2)
+                                  multi_class=True, n_classes=2,
+                                  provided_prob=False)
                 self.assertTrue(isinstance(scores[0], np.int64) or \
                                 isinstance(scores[0], np.float64))
                 self.assertTrue(isinstance(scores[1], np.int64) or \
@@ -81,7 +83,8 @@ class TEST_EdgeCases(unittest.TestCase):
             gt = self.gt_empty
             for pd in [self.pd_normal, self.pd_empty, self.pd_full]:
                 scores = evaluate(gt, pd, metric,
-                                  multi_class=True, n_classes=2)
+                                  multi_class=True, n_classes=2,
+                                  provided_prob=False)
                 self.assertTrue(isinstance(scores[0], np.int64) or \
                                 isinstance(scores[0], np.float64))
                 self.assertTrue(isinstance(scores[1], np.int64) or \
@@ -95,7 +98,8 @@ class TEST_EdgeCases(unittest.TestCase):
             gt = self.gt_full
             for pd in [self.pd_normal, self.pd_empty, self.pd_full]:
                 scores = evaluate(gt, pd, metric,
-                                  multi_class=True, n_classes=2)
+                                  multi_class=True, n_classes=2,
+                                  provided_prob=False)
                 self.assertTrue(isinstance(scores[0], np.int64) or \
                                 isinstance(scores[0], np.float64))
                 self.assertTrue(isinstance(scores[1], np.int64) or \

@@ -27,7 +27,7 @@ from miseval.confusion_matrix import calc_ConfusionMatrix
 #-----------------------------------------------------#
 #           Calculate : Sensitivity via Sets          #
 #-----------------------------------------------------#
-def calc_Sensitivity_Sets(truth, pred, c=1):
+def calc_Sensitivity_Sets(truth, pred, c=1, **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -40,7 +40,7 @@ def calc_Sensitivity_Sets(truth, pred, c=1):
 #-----------------------------------------------------#
 #            Calculate : Sensitivity via CM           #
 #-----------------------------------------------------#
-def calc_Sensitivity_CM(truth, pred, c=1):
+def calc_Sensitivity_CM(truth, pred, c=1, **kwargs):
     # Obtain confusion matrix
     tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
     # Calculate sensitivity

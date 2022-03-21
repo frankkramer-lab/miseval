@@ -25,14 +25,14 @@ from skimage.measure import find_contours
 import dictances
 
 #-----------------------------------------------------#
-#            Calculate : AUC via trapezoid            #
+#            Calculate : Boundary Distance            #
 #-----------------------------------------------------#
 """
 Computes distance of segmentation boundaries between ground truth and prediction.
 
 List of available distances:
     Bhattacharyya distance 	            bhattacharyya
-    Bhattacharyya coefficient 	        bhattacharyya_coefficient
+    Bhattacharyya coefficient           bhattacharyya_coefficient
     Canberra distance 	                canberra
     Chebyshev distance 	                chebyshev
     Chi Square distance 	            chi_square
@@ -60,7 +60,7 @@ Distance Implementation:
 
 """
 def calc_Boundary_Distance(truth, pred, c=1, distance="euclidean",
-                           pooling="mean"):
+                           pooling="mean", **kwargs):
     # Obtain sets with associated class
     gt = np.equal(truth, c)
     pd = np.equal(pred, c)
@@ -83,7 +83,7 @@ def calc_Boundary_Distance(truth, pred, c=1, distance="euclidean",
                 # Append to result list
                 res_dist.append(dist)
     except Exception as e:
-        print("Unexpected error for distance:", distance, e)
+        print("Distance", distance, "does NOT support all edge cases:", e)
     # Apply pooling function
     res = getattr(np, pooling)(res_dist)
     # Return AUC

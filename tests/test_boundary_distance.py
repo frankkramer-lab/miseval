@@ -57,6 +57,8 @@ class TEST_BoundaryDistance(unittest.TestCase):
         # Check existance in metric_dict
         self.assertTrue("BoundaryDistance" in metric_dict)
         self.assertTrue(callable(metric_dict["BoundaryDistance"]))
+        self.assertTrue("Distance" in metric_dict)
+        self.assertTrue(callable(metric_dict["Distance"]))
         self.assertTrue("BD" in metric_dict)
         self.assertTrue(callable(metric_dict["BD"]))
 

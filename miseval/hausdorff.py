@@ -36,7 +36,7 @@ References:
 
 Implementation: https://github.com/mavillan/py-hausdorff
 """
-def calc_SimpleHausdorffDistance(truth, pred, c=1):
+def calc_SimpleHausdorffDistance(truth, pred, c=1, **kwargs):
     # Compute simple Hausdorff Distance
     hd = hausdorff_distance(truth, pred, distance="euclidean")
     # Return Hausdorff Distance
@@ -84,7 +84,7 @@ def border_distance(ref,seg):
     distance_border_ref = border_seg * distance_ref
     return distance_border_ref, distance_border_seg
 
-def calc_AverageHausdorffDistance(truth, pred, c=1):
+def calc_AverageHausdorffDistance(truth, pred, c=1, **kwargs):
     """
     This functions calculates the average symmetric distance and the
     hausdorff distance between a segmentation and a reference image

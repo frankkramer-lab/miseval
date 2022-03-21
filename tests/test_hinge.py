@@ -21,27 +21,43 @@
 #-----------------------------------------------------#
 # External modules
 import numpy as np
+import unittest
 # Internal modules
-from miseval.confusion_matrix import calc_ConfusionMatrix
+from miseval import *
 
 #-----------------------------------------------------#
-#          Calculate : Volumetric Similarity          #
+#                 Unittest: Hinge loss                #
 #-----------------------------------------------------#
-"""
-Formula:
-    VS = 1 - (|FN-FP| / (2TP + FP + FN))
+class TEST_Hinge(unittest.TestCase):
+    @classmethod
+    def setUpClass(self):
+        # Create ground truth
+        np.random.seed(1)
+        self.gt_bi = np.random.randint(2, size=(32,32))
+        self.gt_mc = np.random.randint(5, size=(32,32))
+        # Create prediction mask
+        np.random.seed(2)
+        self.pd_bi = np.random.randint(2, size=(32,32))
+        self.pd_mc = np.random.randint(5, size=(32,32))
+        # Create prediction probability
+        self.prob_bi = np.random.rand(32,32,2)
+        self.prob_mc = np.random.rand(32,32,5)
 
-References:
-    Taha, A.A., Hanbury, A.
-    Metrics for evaluating 3D medical image segmentation: analysis, selection, and tool.
-    BMC Med Imaging 15, 29 (2015). https://doi.org/10.1186/s12880-015-0068-x
-"""
-def calc_VolumetricSimilarity(truth, pred, c=1, **kwargs):
-    # Obtain confusion mat
-    tp, tn, fp, fn = calc_ConfusionMatrix(truth, pred, c)
-    # Compute VS
-    if (2*tp + fp + fn) != 0:
-        vs = 1 - (np.abs(fn-fp) / (2*tp + fp + fn))
-    else : vs = 1.0 - 0.0
-    # Return VS score
-    return vs
+    #-------------------------------------------------#
+    #                Calculate : Hinge                #
+    #-------------------------------------------------#
+    def test_calc_Hinge(self):
+        # Check binary score
+        score_bi = calc_Hinge(self.gt_bi, self.prob_bi, c=1,
+                              provided_prob=True)
+        self.assertTrue(isinstance(score_bi, np.float64))
+        # Check multi-class score
+        for i in range(5):
+            score_mc = calc_Hinge(self.gt_mc, self.prob_mc, c=i,
+                                  provided_prob=True)
+            self.assertTrue(isinstance(score_mc, np.float64))
+        # Check existance in metric_dict
+        self.assertTrue("Hinge" in metric_dict)
+        self.assertTrue(callable(metric_dict["Hinge"]))
+        self.assertTrue("HingeLoss" in metric_dict)
+        self.assertTrue(callable(metric_dict["HingeLoss"]))
