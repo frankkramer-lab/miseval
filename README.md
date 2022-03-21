@@ -41,10 +41,40 @@ The open-source and free to use Python package miseval was developed to establis
 | Matthews Correlation Coefficient | "MCC", "MatthewsCorrelationCoefficient" | miseval.calc_MCC() |
 | Normalized Matthews Correlation Coefficient | "nMCC", "MCC_normalized" | miseval.calc_MCC_Normalized() |
 | Absolute Matthews Correlation Coefficient | "aMCC", "MCC_absolute" | miseval.calc_MCC_Absolute() |
+| Boundary Distance | "BD", "Distance", " BoundaryDistance" | miseval.calc_Boundary_Distance() |
 | True Positive | "TP", "TruePositive" | miseval.calc_TruePositive() |
 | False Positive | "FP", "FalsePositive" | miseval.calc_FalsePositive() |
 | True Negative | "TN", "TrueNegative" | miseval.calc_TrueNegative() |
 | False Negative | "FN", "FalseNegative" | miseval.calc_FalseNegative() |
+
+#### Options for Boundary Distance computation
+
+```
+List of available distances:
+    Bhattacharyya distance 	            bhattacharyya
+    Bhattacharyya coefficient 	         bhattacharyya_coefficient
+    Canberra distance 	                 canberra
+    Chebyshev distance 	                chebyshev
+    Chi Square distance                    chi_square
+    Cosine Distance                        cosine
+    Euclidean distance 	                euclidean
+    Hamming distance 	                  hamming
+    Jensen-Shannon divergence 	         jensen_shannon
+    Kullback-Leibler divergence            kullback_leibler
+    Mean absolute error 	               mae
+    Taxicab geometry 	                  manhattan, cityblock, total_variation
+    Minkowski distance 	                minkowsky
+    Mean squared error 	                mse
+    Pearson's distance 	                pearson
+    Squared deviations from the mean 	  squared_variation
+
+Distance Pooling (how to combine computed distances to a single value):
+    Distance Sum                        sum
+    Distance Averaging                  mean
+    Minimum Distance                    amin
+    Maximum Distance                    amax
+
+```
 
 ## How to Use
 
