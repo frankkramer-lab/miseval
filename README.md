@@ -43,6 +43,7 @@ The open-source and free to use Python package miseval was developed to establis
 | Absolute Matthews Correlation Coefficient | "aMCC", "MCC_absolute" | miseval.calc_MCC_Absolute() |
 | Boundary Distance | "BD", "Distance", " BoundaryDistance" | miseval.calc_Boundary_Distance() |
 | Hinge Loss | "Hinge", "HingeLoss" | miseval.calc_Hinge() |
+| Cross-Entropy | "CE", "CrossEntropy" | miseval.calc_CrossEntropy() |
 | True Positive | "TP", "TruePositive" | miseval.calc_TruePositive() |
 | False Positive | "FP", "FalsePositive" | miseval.calc_FalsePositive() |
 | True Negative | "TN", "TrueNegative" | miseval.calc_TrueNegative() |
