@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
@@ -17,7 +17,7 @@ setup(
    python_requires='>=3.8',
    install_requires=['numpy<1.22,>=1.18',
                      'scikit-learn>=1.0.2',
-                     'scikit-image>=0.19.1'
+                     'scikit-image>=0.19.1',
                      'scipy>=1.7.3',
                      'hausdorff>=0.2.6',
                      'numba>=0.54.0',
