@@ -53,22 +53,22 @@ The open-source and free to use Python package miseval was developed to establis
 
 ```
 List of available distances:
-    Bhattacharyya distance 	            bhattacharyya
-    Bhattacharyya coefficient 	        bhattacharyya_coefficient
-    Canberra distance 	                canberra
-    Chebyshev distance 	                chebyshev
+    Bhattacharyya distance              bhattacharyya
+    Bhattacharyya coefficient           bhattacharyya_coefficient
+    Canberra distance                   canberra
+    Chebyshev distance                  chebyshev
     Chi Square distance                 chi_square
     Cosine Distance                     cosine
-    Euclidean distance 	                euclidean
-    Hamming distance 	                  hamming
-    Jensen-Shannon divergence 	        jensen_shannon
+    Euclidean distance                  euclidean
+    Hamming distance                    hamming
+    Jensen-Shannon divergence           jensen_shannon
     Kullback-Leibler divergence         kullback_leibler
-    Mean absolute error 	              mae
-    Taxicab geometry 	                  manhattan, cityblock, total_variation
-    Minkowski distance 	                minkowsky
-    Mean squared error 	                mse
-    Pearson's distance 	                pearson
-    Squared deviations from the mean 	  squared_variation
+    Mean absolute error                 mae
+    Taxicab geometry                    manhattan, cityblock, total_variation
+    Minkowski distance                  minkowsky
+    Mean squared error                  mse
+    Pearson's distance                  pearson
+    Squared deviations from the mean    squared_variation
 
 Distance Pooling (how to combine computed distances to a single value):
     Distance Sum                        sum
