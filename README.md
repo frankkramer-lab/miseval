@@ -128,8 +128,10 @@ which contains the annotation.
 Arguments:
     truth (NumPy Matrix):            Ground Truth segmentation mask.
     pred (NumPy Matrix):             Prediction segmentation mask.
-    metric (String or Function):     Metric function. Either a function directly or encoded as String from miseval or a custom function.
-    multi_class (Boolean):           Boolean parameter, if segmentation is a binary or multi-class problem. By default False -> Binary mode.
+    metric (String or Function):     Metric function. Either a function directly or encoded as
+                                     String from miseval or a custom function.
+    multi_class (Boolean):           Boolean parameter, if segmentation is a binary or multi-class
+                                     problem. By default False -> Binary mode.
     n_classes (Integer):             Number of classes. By default 2 -> Binary
     kwargs (arguments):              Additional arguments for passing down to metric functions.
 
