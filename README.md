@@ -128,8 +128,10 @@ which contains the annotation.
 Arguments:
     truth (NumPy Matrix):            Ground Truth segmentation mask.
     pred (NumPy Matrix):             Prediction segmentation mask.
-    metric (String or Function):     Metric function. Either a function directly or encoded as String from miseval or a custom function.
-    multi_class (Boolean):           Boolean parameter, if segmentation is a binary or multi-class problem. By default False -> Binary mode.
+    metric (String or Function):     Metric function. Either a function directly or encoded as
+                                     String from miseval or a custom function.
+    multi_class (Boolean):           Boolean parameter, if segmentation is a binary or multi-class
+                                     problem. By default False -> Binary mode.
     n_classes (Integer):             Number of classes. By default 2 -> Binary
     kwargs (arguments):              Additional arguments for passing down to metric functions.
 
@@ -180,13 +182,20 @@ Bavaria, Germany
 
 Dominik Müller, Dennis Hartmann, Philip Meyer, Florian Auer, Iñaki Soto-Rey, Frank Kramer. (2022)   
 MISeval: a Metric Library for Medical Image Segmentation Evaluation.  
-arXiv e-print: https://arxiv.org/abs/2201.09395
+PubMed: https://pubmed.ncbi.nlm.nih.gov/35612011/    
+DOI: https://doi.org/10.3233/shti220391  
+arXiv e-print: https://arxiv.org/abs/2201.09395  
 
 ```
-@inproceedings{misevalMUELLER2022,
+@Article{misevalMUELLER2022,
   title={MISeval: a Metric Library for Medical Image Segmentation Evaluation},
   author={Dominik Müller, Dennis Hartmann, Philip Meyer, Florian Auer, Iñaki Soto-Rey, Frank Kramer},
-  year={2022}
+  year={2022},
+  journal={Studies in health technology and informatics},
+  volume={294},
+  number={},
+  pages={33-37},
+  doi={10.3233/shti220391},
   eprint={2201.09395},
   archivePrefix={arXiv},
   primaryClass={cs.CV}
