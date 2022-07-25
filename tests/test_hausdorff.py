@@ -39,6 +39,15 @@ class TEST_HausdorffDistance(unittest.TestCase):
         np.random.seed(2)
         self.pd_bi = np.random.randint(2, size=(32,32))
         self.pd_mc = np.random.randint(5, size=(32,32))
+        #same for 3d
+        # Create ground truth
+        np.random.seed(1)
+        self.gt_bi_3d = np.random.randint(2, size=(32,32,32))
+        self.gt_mc_3d = np.random.randint(5, size=(32,32,32))
+        # Create prediction
+        np.random.seed(2)
+        self.pd_bi_3d = np.random.randint(2, size=(32,32,32))
+        self.pd_mc_3d = np.random.randint(5, size=(32,32,32))
 
     #-------------------------------------------------#
     #      Calculate : Simple Hausdorff Distance      #
@@ -73,3 +82,15 @@ class TEST_HausdorffDistance(unittest.TestCase):
         self.assertTrue(callable(metric_dict["AHD"]))
         self.assertTrue("AverageHausdorffDistance" in metric_dict)
         self.assertTrue(callable(metric_dict["AverageHausdorffDistance"]))
+
+    #-------------------------------------------------#
+    #     Calculate : Average Hausdorff Distance 3d   #
+    #-------------------------------------------------#
+    def test_calc_AverageHausdorffDistance_3d(self):
+        # Check binary score
+        score_bi = calc_AverageHausdorffDistance(self.gt_bi_3d, self.pd_bi_3d, c=1)
+        self.assertTrue(isinstance(score_bi, np.float64))
+        # Check multi-class score
+        for i in range(5):
+            score_mc = calc_AverageHausdorffDistance(self.gt_mc_3d, self.pd_mc_3d, c=i)
+            self.assertTrue(isinstance(score_mc, np.float64))
