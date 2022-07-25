@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
    name='miseval',
-   version='1.2.1',
+   version='1.2.2',
    description='A Metric Library for Medical Image Segmentation Evaluation',
    url='https://github.com/frankkramer-lab/miseval',
    author='Dominik Müller',
