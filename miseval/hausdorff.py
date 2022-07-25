@@ -53,18 +53,33 @@ References:
 
 Implementation: https://github.com/Issam28/Brain-tumor-segmentation
 """
-def border_map(binary_img,neigh):
+def border_map(binary_img):
     """
-    Creates the border for a 3D image
+    Creates the border for a 3D or 2D image
     """
+    ndims = binary_img.ndim
     binary_map = np.asarray(binary_img, dtype=np.uint8)
-    neigh = neigh
-    west = ndimage.shift(binary_map, [-1, 0], order=0)
-    east = ndimage.shift(binary_map, [1, 0], order=0)
-    north = ndimage.shift(binary_map, [0, 1], order=0)
-    south = ndimage.shift(binary_map, [0, -1], order=0)
-    cumulative = west + east + north + south
-    border = ((cumulative < 4) * binary_map) == 1
+
+    if ndims == 2:
+        left = ndimage.shift(binary_map, [-1, 0], order=0)
+        right = ndimage.shift(binary_map, [1, 0], order=0)
+        superior = ndimage.shift(binary_map, [0, 1], order=0)
+        inferior = ndimage.shift(binary_map, [0, -1], order=0)
+        cumulative = left + right + superior + inferior
+        ndir = 4
+    elif ndims == 3:
+        left = ndimage.shift(binary_map, [-1, 0, 0], order=0)
+        right = ndimage.shift(binary_map, [1, 0, 0], order=0)
+        anterior = ndimage.shift(binary_map, [0, 1, 0], order=0)
+        posterior = ndimage.shift(binary_map, [0, -1, 0], order=0)
+        superior = ndimage.shift(binary_map, [0, 0, 1], order=0)
+        inferior = ndimage.shift(binary_map, [0, 0, -1], order=0)
+        cumulative = left + right + anterior + posterior + superior + inferior
+        ndir = 6
+    else:
+        raise RuntimeError(f'Image must be of 2 or 3 dimensions, got {ndims}')
+
+    border = ((cumulative < ndir) * binary_map) == 1
     return border
 
 def border_distance(ref,seg):
@@ -72,9 +87,8 @@ def border_distance(ref,seg):
     This functions determines the map of distance from the borders of the
     segmentation and the reference and the border maps themselves
     """
-    neigh=8
-    border_ref = border_map(ref,neigh)
-    border_seg = border_map(seg,neigh)
+    border_ref = border_map(ref)
+    border_seg = border_map(seg)
     oppose_ref = 1 - ref
     oppose_seg = 1 - seg
     # euclidean distance transform
