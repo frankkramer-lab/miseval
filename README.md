@@ -1,7 +1,7 @@
 # miseval: a metric library for Medical Image Segmentation EVALuation
 
 [![shield_python](https://img.shields.io/pypi/pyversions/miseval?style=flat-square)](https://www.python.org/)
-[![shield_build](https://img.shields.io/github/workflow/status/frankkramer-lab/miseval/Python%20package?style=flat-square)](https://github.com/frankkramer-lab/miseval)
+[![shield_build](https://img.shields.io/github/actions/workflow/status/frankkramer-lab/miseval/python-package.yml?branch=master&style=flat-square)](https://github.com/frankkramer-lab/miseval)
 [![shield_pypi_version](https://img.shields.io/pypi/v/miseval?style=flat-square)](https://pypi.org/project/miseval/)
 [![shield_pypi_downloads](https://img.shields.io/pypi/dm/miseval?style=flat-square)](https://pypistats.org/packages/miseval)
 [![shield_license](https://img.shields.io/github/license/frankkramer-lab/miseval?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0.en.html)
